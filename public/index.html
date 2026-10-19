@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+          <title>
+            Consultorio Psicol&oacute;gico metAMORfosis
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+:root {
+        --turquesa:#2EC4B6;
+        --turquesaOscuro:#1AA79B;
+        --morado:#7B2CBF;
+        --moradoClaro:#9D4EDD;
+        --azul:#4EA8DE;
+        --azulClaro:#CAF0F8;
+        --gris:#f8f9fa;
+        --blanco:#ffffff;
+        --transicion:all .35s ease;
+    }
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    html {
+        scroll-behavior:smooth;
+    }
+    body {
+        font-family:'Segoe UI',sans-serif;
+        background:#fff;
+        padding-top:80px;
+    }
+    .navbar {
+        background:white;
+        box-shadow:0 5px 20px rgba(0,0,0,.08);
+    }
+    .navbar-brand {
+        font-size:28px;
+        font-weight:bold;
+        color:var(--morado)!important;
+    }
+    .navbar-brand span {
+        color:var(--turquesa);
+    }
+    .nav-link {
+        color:#444!important;
+        margin-left:10px;
+        transition:var(--transicion);
+        font-weight:500;
+    }
+    .nav-link:hover {
+        color:var(--morado)!important;
+    }
+    .btn-login {
+        background:linear-gradient(45deg,var(--morado),var(--azul));
+        color:white;
+        border-radius:40px;
+        padding:10px 25px;
+        font-weight:bold;
+        transition:.3s;
+    }
+    .btn-login:hover {
+        transform:translateY(-3px);
+        color:white;
+    }
+    .navbar-toggler {
+        border:none;
+    }
+    .carousel-item {
+        height:650px;
+    }
+    .carousel-item img {
+        width:100%;
+        height:650px;
+        object-fit:cover;
+        filter:brightness(.55);
+    }
+    .carousel-caption {
+        bottom:160px;
+    }
+    .carousel-caption h1 {
+        font-size:60px;
+        font-weight:bold;
+    }
+    .carousel-caption p {
+        font-size:22px;
+    }
+    .btn-cita {
+        background:linear-gradient(45deg,var(--turquesa),var(--azul));
+        color:white;
+        border-radius:50px;
+        padding:15px 35px;
+        font-weight:bold;
+        border:none;
+    }
+    .btn-cita:hover {
+        transform:scale(1.05);
+    }
+    .modal-header {
+        background:linear-gradient(45deg,var(--morado),var(--azul));
+        color:white;
+    }
+    .form-control {
+        border-radius:12px;
+    }
+    .btn-ingresar {
+        background:linear-gradient(45deg,var(--turquesa),var(--morado));
+        color:white;
+        width:100%;
+        border:none;
+        border-radius:30px;
+        padding:12px;
+    }
+    .btn-ingresar:hover {
+        background:linear-gradient(45deg,var(--morado),var(--turquesa));
+    }
+</style>
+<style>
+body {
+        overflow-x:hidden
+    }
+    section {
+        scroll-margin-top:88px
+    }
+    .card,.info-panel,.map-card {
+        transition:transform .35s ease,box-shadow .35s ease
+    }
+    .card:hover {
+        transform:translateY(-7px);
+        box-shadow:0 20px 45px rgba(35,20,70,.14)!important
+    }
+    .gallery-carousel .carousel-item {
+        height:650px
+    }
+    .gallery-carousel img {
+        height:650px;
+        object-fit:cover;
+        filter:brightness(.55)
+    }
+    .gallery-carousel .carousel-caption {
+        bottom:160px;
+        text-shadow:0 2px 12px rgba(0,0,0,.5)
+    }
+    .gallery-carousel .carousel-caption h1 {
+        font-size:54px;
+        font-weight:700
+    }
+    .gallery-carousel .carousel-caption p {
+        font-size:20px
+    }
+    .gallery-carousel .carousel-caption span {
+        display:inline-block;
+        padding:10px 18px;
+        background:rgba(30,22,55,.58);
+        border-radius:999px;
+        backdrop-filter:blur(5px)
+    }
+    .location-section {
+        background:linear-gradient(180deg,#f8faff,#fff)
+    }
+    .info-panel {
+        background:#fff;
+        border-radius:28px;
+        padding:30px;
+        box-shadow:0 16px 45px rgba(45,31,84,.10);
+        height:100%
+    }
+    .info-item {
+        display:flex;
+        gap:16px;
+        align-items:flex-start;
+        padding:15px 0;
+        border-bottom:1px solid #edf0f7
+    }
+    .info-item:last-of-type {
+        border-bottom:0
+    }
+    .info-item p {
+        margin:.2rem 0 0;
+        color:#6b6e79
+    }
+    .info-icon {
+        width:46px;
+        height:46px;
+        border-radius:14px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:linear-gradient(135deg,#e8fffb,#f0e5ff);
+        color:#7B2CBF;
+        font-size:20px;
+        flex:0 0 auto
+    }
+    .location-note {
+        margin-top:18px;
+        padding:13px 15px;
+        background:#f6f3ff;
+        border-radius:16px;
+        color:#555;
+        font-size:.92rem;
+        display:flex;
+        gap:10px
+    }
+    .location-note i {
+        color:#7B2CBF    
+    }
+    .map-card {
+        background:#fff;
+        border-radius:28px;
+        overflow:hidden;
+        box-shadow:0 16px 45px rgba(45,31,84,.10);
+        min-height:380px
+    }
+    .login-modal {
+        box-shadow:0 30px 80px rgba(25,10,50,.3)
+    }
+    .login-head {
+        background:linear-gradient(135deg,#7B2CBF,#4EA8DE)
+    }
+    .input-icon-wrap {
+        position:relative
+    }
+    .input-icon-wrap>i {
+        position:absolute;
+        left:16px;
+        top:50%;
+        transform:translateY(-50%);
+        z-index:3;
+        color:#7B2CBF
+    }
+    .input-icon-wrap .form-control {
+        padding-left:44px
+    }
+    .password-wrap .input-group-text {
+        background:#fff;
+        border-right:0
+    }
+    .password-wrap .form-control {
+        border-left:0
+    }
+
+    .password-wrap .btn {
+        border-color:#dee2e6
+    }
+    reveal {
+        animation:fadeUp .7s ease both
+    }
+    @keyframes fadeUp {
+        from {
+            opacity:0;
+            transform:translateY(18px)
+        }
+        to {
+            opacity:1;
+            transform:none
+        }
+    }
+    @media(max-width:768px) {
+        .carousel-item,.carousel-item img {
+            height:520px
+        }
+        .carousel-caption {
+            bottom:100px
+        }
+        .carousel-caption h1 {
+            font-size:40px
+        }
+        .gallery-carousel .carousel-item,.gallery-carousel img {
+            height:520px
+        }
+        .gallery-carousel .carousel-caption {
+            bottom:90px
+        }
+        .gallery-carousel .carousel-caption h1 {
+            font-size:36px
+        }
+    }
+</style>
+<style id="metamor-color-refresh">
+:root {
+    --m-pink:#f7a8c8;
+    --m-lilac:#d9b8f4;
+    --m-sky:#a9def9;
+    --m-mint:#a8eadf;
+    --m-peach:#ffd7b5;
+}
+body {
+    background:radial-gradient(circle at 8% 7%,rgba(217,184,244,.24),transparent 23%),radial-gradient(circle at 92% 18%,rgba(169,222,249,.24),transparent 24%),linear-gradient(180deg,#fffaff 0%,#ffffff 46%,#fff8fc 100%);
+}
+.navbar {
+    border-bottom:1px solid rgba(123,44,191,.07)
+}
+.nav-link {
+    padding:9px 12px!important;
+    border-radius:999px
+}
+.nav-link:hover {
+    background:#f4ebff
+}
+.carousel-item {
+    position:relative
+}
+.carousel-item img {
+    filter:brightness(.73) saturate(1.12);
+    transition:transform 7s ease,filter .5s ease
+}
+.carousel-item.active img {
+    transform:scale(1.035)
+}
+.carousel-caption {
+    z-index:2;
+    text-shadow:0 3px 18px rgba(34,19,53,.55)
+}
+.carousel-caption h1 {
+    animation:captionUp .7s ease both
+}
+.carousel-caption p {
+    animation:captionUp .9s .08s ease both
+}
+.btn-cita {
+    box-shadow:0 12px 30px rgba(46,196,182,.25);
+    transition:.3s
+}
+section {
+    position:relative
+}
+section.py-5:not(#galeria):not(#contacto) {
+    background:linear-gradient(135deg,rgba(247,168,200,.10),rgba(169,222,249,.09))
+}
+#nosotros {
+    background:linear-gradient(135deg,#fbf4ff,#f0fbff)!important
+}
+#servicios {
+    background:linear-gradient(135deg,#36cdb7 0%,#55bfe9 48%,#8d5be8 100%)!important
+}
+#psicologos {
+    background:linear-gradient(135deg,#fff7fb,#f7f0ff)!important
+}
+#galeria {
+    background:linear-gradient(135deg,#eefcff,#fff4f9)!important;
+    padding-bottom:70px!important
+}
+#contacto {
+    background:linear-gradient(135deg,#fff5f9,#f3efff,#effcff)!important
+}
+.card,.info-panel,.map-card {
+    border:1px solid rgba(123,44,191,.08)!important;
+    box-shadow:0 18px 45px rgba(72,47,101,.11)!important
+}
+.card {
+    background:linear-gradient(145deg,#ffffff 0%,#fbf3ff 52%,#effcff 100%)!important
+}
+.card:hover {
+    transform:translateY(-8px) scale(1.01)
+}
+.gallery-card {
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 24px 65px rgba(62,43,93,.18)
+}
+.gallery-card .card-item img {
+    filter:brightness(.70) saturate(1.08)
+}
+.gallery-card .card-caption span {
+    background:linear-gradient(90deg,rgba(123,44,191,.78),rgba(239,106,168,.68))!important
+}
+.info-panel {
+    background:linear-gradient(145deg,#fff,#fbf7ff)!important
+}
+.map-card {
+    border:8px solid rgba(255,255,255,.75)!important
+}
+.badge.bg-primary,.badge.bg-info,.badge.bg-success {
+    box-shadow:0 10px 25px rgba(123,44,191,.12)
+}
+.footer-color-refresh {
+    background:linear-gradient(135deg,#2ec4b6,#5f62da,#ef6aa8)!important
+}
+@keyframes captionUp {
+    from {
+        opacity:0;
+        transform:translateY(16px)
+    }
+    to {
+        opacity:1;
+        transform:none
+    }
+}
+@media(max-width:768px) {
+    .carousel-caption h1 {
+        font-size:38px!important
+    }
+    .carousel-caption {
+        bottom:90px
+    }
+}
+
+</style>
+<style id="metamor-readability-final">
+:root {
+    --read-ink:#2f2540;
+    --read-purple:#6a1fb5;
+    --read-purple-deep:#4f168c;
+    --read-turq:#0f9f91;
+    --read-magenta:#c72f78;
+    --read-blue:#227fbd;
+}
+body {
+    color:var(--read-ink)!important
+}
+.card,.card-body,.info-panel,.info-panel *,.map-card,.map-card * {
+    color:var(--read-ink);
+}
+.card h1,.card h2,.card h3,.card h4,.card h5,.card h6,
+.info-panel h1,.info-panel h2,.info-panel h3,.info-panel h4,
+.map-card h1,.map-card h2,.map-card h3,.map-card h4 {
+    color:var(--read-purple-deep)!important;
+    font-weight:800
+}
+.card p,.card li,.card .small,.info-panel p,.map-card p {
+    color:#423951!important;
+    opacity:1!important
+}
+.card .text-muted,.info-panel .text-muted,.map-card .text-muted {
+    color:#5b5268!important;
+    opacity:1!important
+}
+#servicios .card h3,#servicios .card h4,#servicios .card p,#servicios .card li,#servicios .card .small {
+    color:var(--read-ink)!important;
+    opacity:1!important
+}
+#servicios>*,#servicios .container {
+    position:relative;
+    z-index:1
+}
+#servicios h2,#servicios> .container>p {
+    color:#fff!important;
+    text-shadow:0 2px 10px rgba(46,22,70,.24)
+}
+#nosotros .card:nth-child(1) {
+    background:linear-gradient(145deg,#fff9fc,#f1e5ff)!important;
+    border-top:6px solid #d9549a!important
+}
+#nosotros .card:nth-child(2) {
+    background:linear-gradient(145deg,#f7fffe,#d9f8f3)!important;
+    border-top:6px solid #20b8a8!important
+}
+#nosotros .card:nth-child(3) {
+    background:linear-gradient(145deg,#fffdf2,#e3efff)!important;
+    border-top:6px solid #4b91d1!important
+}
+#servicios .card:nth-child(1) {
+    border-top:6px solid #7b2cbf!important
+}
+#servicios .card:nth-child(2) {
+    border-top:6px solid #e83e8c!important
+}
+#servicios .card:nth-child(3) {
+    border-top:6px solid #11bfae!important
+}
+#servicios .card:nth-child(4) {
+    border-top:6px solid #36a9e1!important
+}
+#servicios .card:nth-child(5) {
+    border-top:6px solid #ff9f68!important
+}
+#servicios .card:nth-child(6) {
+    border-top:6px solid #6d5bd0!important
+}
+#servicios .card:nth-child(7) {
+    border-top:6px solid #2f9fc5!important
+}
+#servicios .card .card-body {
+    padding:1.8rem!important
+}
+#servicios .card i,.card .bi {
+    font-size:2rem;
+    color:var(--read-purple)!important
+}
+#servicios .card:nth-child(2) i {
+    color:var(--read-magenta)!important
+}
+#servicios .card:nth-child(3) i {
+    color:var(--read-turq)!important
+}
+#servicios .card:nth-child(4) i {
+    color:var(--read-blue)!important
+}
+#servicios .card:nth-child(5) i {
+    color:#d66b2a!important
+}
+#servicios .card:nth-child(6) i {
+    color:#5b43bf!important
+}
+#servicios .card:nth-child(7) i {
+    color:#158aa7!important
+}
+#psicologos .card {
+    position:relative;
+    overflow:hidden
+}
+#psicologos .card:before {
+    content:"";
+    position:absolute;
+    inset:0 auto auto 0;
+    width:100%;
+    height:7px;
+    background:linear-gradient(90deg,#7b2cbf,#e83e8c,#11bfae)
+}
+#psicologos .card p {
+    color:#4d4458!important
+}
+.location-section h2,.location-section h3 {
+    color:var(--read-purple-deep)!important
+}
+.info-item strong {
+    color:#332643!important
+}
+.info-item p {
+    color:#514960!important
+}
+.location-note {
+    color:#40364f!important
+}
+.gallery-carousel .carousel-caption h1,.gallery-carousel .carousel-caption p,.gallery-carousel .carousel-caption span {
+    color:#fff!important
+}
+.gallery-carousel .carousel-caption h1,.carousel-caption h1,.carousel-caption p {
+    text-shadow:0 3px 18px rgba(22,8,35,.80)!important
+}
+.modal-body,.modal-body label,.modal-body .form-text {
+    color:#3b3048!important
+}
+.modal-body .form-control {
+    color:#2f2540!important;
+    background:#fff!important
+}
+.input-icon-wrap>i {
+    color:var(--read-purple)!important
+}
+.btn-login,.btn-ingresar {
+    color:#fff!important
+}
+section h2,section h3 {
+    letter-spacing:.1px
+}
+</style>
+<style>
+   :root {
+    --turquesa:#00D4B8;
+    --turquesa2:#00BFA6;
+    --morado:#6A11CB;
+    --morado2:#8E2DE2;
+    --azul:#2575FC;
+    --azul2:#4FACFE;
+    --blanco:#FFFFFF;
+    --gris:#F5F7FB;
+}
+body {
+    background:linear-gradient(
+135deg,
+#4009a5c9 0%,
+#1d66a5e3 45%,
+#1275a3 100%
+);
+    background-attachment:fixed;
+    background-size:cover;
+}
+.navbar {
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+#nosotros {
+    background:rgba(255,255,255,.92);
+    border-radius:30px;
+    margin:60px auto;
+}
+.filosofia {
+    background:linear-gradient(
+135deg,
+#00D4B8,
+#6A11CB,
+#2575FC
+);
+    color:white;
+}
+.filosofia h2,
+.filosofia h3,
+.filosofia p {
+    color:white;
+}
+#servicios {
+    background:linear-gradient(
+135deg,
+#00C9A7,
+#4FACFE,
+#6A11CB
+);
+    color:white;
+}
+#servicios h2,
+#servicios h4,
+#servicios p {
+    color:white;
+}
+.card {
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(
+135deg,
+#a4e9e0 0%,
+#6c99c0 45%,
+#a458e7 100%
+);
+    transition:.4s;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+.card:hover {
+    transform:translateY(-12px);
+    box-shadow:0 25px 45px rgba(0,0,0,.25);
+}
+.btn-primary,
+.btn-info,
+.btn-success {
+    background:linear-gradient(
+45deg,
+#00D4B8,
+#6A11CB
+);
+    border:none;
+}
+.btn-primary:hover,
+.btn-info:hover,
+.btn-success:hover {
+    background:linear-gradient(
+45deg,
+#6A11CB,
+#2575FC
+);
+    transform:scale(1.05);
+}
+.galeria {
+    border-radius:20px;
+    transition:.4s;
+}
+.galeria:hover {
+    transform:scale(1.08);
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+footer {
+    background:linear-gradient(
+45deg,
+#00D4B8,
+#6A11CB
+);
+    color:white;
+}
+footer a {
+    color:white;
+}
+.display-5 {
+    font-weight:700;
+}
+.badge {
+    font-size:15px;
+    padding:10px 18px;
+    border-radius:30px;
+}
+.bi {
+    transition:.3s;
+}
+.bi:hover {
+    transform:scale(1.2);
+}
+  </style>
+  <style id="metamor-vibrant-visual">
+   /* Identidad visual cálida y colorida */
+:root {
+  --main-purple: #7B2CBF;
+  --deep-purple: #55208a;
+  --turquoise: #23B7A6;
+  --bright-blue: #4EA8DE;
+  --pink: #ED5FA5;
+  --yellow: #FFC94A;
+  --ink: #2c2140;
+}
+body {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(237,95,165,.19), transparent 24%),
+    radial-gradient(circle at 94% 12%, rgba(78,168,222,.20), transparent 26%),
+    radial-gradient(circle at 18% 80%, rgba(35,183,166,.16), transparent 28%),
+    linear-gradient(180deg, #fff9ff 0%, #ffffff 44%, #fff6fb 100%);
+  color: var(--ink);
+}
+.navbar {
+  background: linear-gradient(90deg, rgba(255,255,255,.97), rgba(250,244,255,.97), rgba(240,252,250,.97)) !important;
+  border-bottom: 3px solid rgba(123,44,191,.12);
+}
+.navbar-brand {
+  color: var(--main-purple) !important;
+  text-shadow: 0 4px 15px rgba(123,44,191,.15);
+}
+.nav-link {
+  color: #463454 !important;
+  font-weight: 750 !important;
+  border-radius: 999px;
+  transition: .25s ease !important;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--main-purple), var(--turquoise)) !important;
+  transform: translateY(-2px);
+}
+.hero,
+.banner,
+.hero-section {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(255,255,255,.24), transparent 24%),
+    radial-gradient(circle at 18% 85%, rgba(255,201,74,.22), transparent 22%),
+    linear-gradient(135deg, #7B2CBF 0%, #6f58d9 38%, #4EA8DE 70%, #23B7A6 100%) !important;
+  color: #fff !important;
+  border-radius: 32px;
+  box-shadow: 0 26px 70px rgba(71,43,112,.24);
+}
+section {
+  position: relative;
+}
+section:nth-of-type(odd) {
+  background: linear-gradient(135deg, #fff9ff 0%, #f4edff 48%, #f0fffc 100%) !important;
+}
+section:nth-of-type(even) {
+  background: linear-gradient(135deg, #f8f2ff 0%, #eef9ff 50%, #fff1f7 100%) !important;
+}
+.card,
+.service-card,
+.psychologist-card,
+.gallery-card,
+.info-card,
+.feature-card {
+  border: 0 !important;
+  border-radius: 24px !important;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: 0 16px 38px rgba(76,45,103,.13) !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+}
+.card:hover,
+.service-card:hover,
+.psychologist-card:hover,
+.gallery-card:hover,
+.info-card:hover,
+.feature-card:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: 0 25px 55px rgba(76,45,103,.19) !important;
+}
+.card:nth-child(3n+1) { border-top: 6px solid var(--main-purple) !important; }
+.card:nth-child(3n+2) { border-top: 6px solid var(--turquoise) !important; }
+.card:nth-child(3n) { border-top: 6px solid var(--pink) !important; }
+h1, h2, h3, h4, h5 { color: #43205f; }
+.text-muted { color: #5f5969 !important; }
+.btn-primary,
+.btn-main,
+.btn-cta {
+  background: linear-gradient(90deg, var(--main-purple), var(--pink), var(--turquoise)) !important;
+  background-size: 200% 100% !important;
+  border: 0 !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(123,44,191,.22);
+  transition: .3s ease !important;
+}
+.btn-primary:hover,
+.btn-main:hover,
+.btn-cta:hover {
+  background-position: 100% 0 !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+.gallery-shell,
+.carousel,
+#galeria .carousel {
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  box-shadow: 0 22px 58px rgba(56,35,89,.18) !important;
+}
+.badge,
+.pill {
+  background: linear-gradient(90deg, #e9d8ff, #cef7ef) !important;
+  color: #55208a !important;
+  font-weight: 850 !important;
+}
+.location-section {
+  background: linear-gradient(135deg, #f4ecff, #eafcff, #fff0f7) !important;
+}
+footer {
+  background: linear-gradient(135deg, #4c1d72, #6331a3, #167f78) !important;
+}
+.floating {
+  box-shadow: 0 14px 28px rgba(64,35,93,.22) !important;
+}
+.floating.wa { background: #23B7A6 !important; color:#fff !important; }
+.floating.up { background: #7B2CBF !important; color:#fff !important; }
+  </style>
+ 
+  <style id="metamor-final-soft-vibrant">
+    :root {
+      --final-purple: #7b2cbf;
+      --final-purple-2: #9d5fe7;
+      --final-turq: #19b9a5;
+      --final-blue: #56b8e6;
+      --final-pink: #ef70a8;
+      --final-yellow: #ffd76a;
+      --final-ink: #2f2540;
+    }
+
+    body {
+      color: var(--final-ink) !important;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(239, 112, 168, .20), transparent 24%),
+        radial-gradient(circle at 92% 13%, rgba(86, 184, 230, .22), transparent 25%),
+        radial-gradient(circle at 18% 86%, rgba(25, 185, 165, .17), transparent 26%),
+        linear-gradient(180deg, #fff6fb 0%, #f7f1ff 35%, #effcff 68%, #fff8f1 100%) !important;
+    }
+
+    .navbar {
+      background: rgba(255,255,255,.96) !important;
+      border-bottom: 3px solid rgba(123,44,191,.16) !important;
+    }
+
+    .nav-link {
+      color: #43334f !important;
+      font-weight: 800 !important;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: #fff !important;
+      background: linear-gradient(90deg, var(--final-purple), var(--final-turq)) !important;
+    }
+
+    #principal {
+      box-shadow: 0 28px 70px rgba(77,34,117,.22) !important;
+    }
+
+    section {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(123,44,191,.05);
+    }
+
+    #nosotros {
+      background: linear-gradient(135deg, #fff0f8 0%, #eee4ff 52%, #e6fbf8 100%) !important;
+    }
+
+    #servicios {
+      background: linear-gradient(135deg, #dffbf5 0%, #e5f4ff 48%, #f2e3ff 100%) !important;
+      color: var(--final-ink) !important;
+    }
+
+    #servicios h2,
+    #servicios h3,
+    #servicios h4,
+    #servicios p,
+    #servicios li,
+    #servicios .small {
+      color: var(--final-ink) !important;
+      text-shadow: none !important;
+    }
+
+    #psicologos {
+      background: linear-gradient(135deg, #f2eaff 0%, #e9faff 50%, #fff0f7 100%) !important;
+    }
+
+    #galeria {
+      background: linear-gradient(135deg, #e5faff 0%, #f3e9ff 50%, #fff0f6 100%) !important;
+    }
+
+    #contacto {
+      background: linear-gradient(135deg, #fff0f7 0%, #f0e9ff 48%, #e7fbf8 100%) !important;
+    }
+
+    #nosotros .card,
+    #servicios .card,
+    #psicologos .card,
+    .info-panel {
+      background: rgba(255,255,255,.97) !important;
+      color: var(--final-ink) !important;
+      border: 2px solid rgba(123,44,191,.10) !important;
+      box-shadow: 0 18px 40px rgba(71,46,105,.14) !important;
+    }
+
+    #nosotros .card:nth-child(1) { border-top: 7px solid #e95d9a !important; }
+    #nosotros .card:nth-child(2) { border-top: 7px solid #18b8a5 !important; }
+    #nosotros .card:nth-child(3) { border-top: 7px solid #4f9dde !important; }
+
+    #servicios .card:nth-child(1) { border-top: 7px solid #7b2cbf !important; }
+    #servicios .card:nth-child(2) { border-top: 7px solid #ef6fa8 !important; }
+    #servicios .card:nth-child(3) { border-top: 7px solid #19b9a5 !important; }
+    #servicios .card:nth-child(4) { border-top: 7px solid #56b8e6 !important; }
+    #servicios .card:nth-child(5) { border-top: 7px solid #ffae67 !important; }
+    #servicios .card:nth-child(6) { border-top: 7px solid #7562d7 !important; }
+    #servicios .card:nth-child(7) { border-top: 7px solid #38a7c4 !important; }
+
+    #servicios .card i,
+    #psicologos .card i,
+    #nosotros .card i {
+      font-size: 2.25rem !important;
+      margin-bottom: 8px;
+    }
+
+    .gallery-grid {
+    margin-top: 10px;
+}
+
+.gallery-card {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-caption {
+    padding: 18px;
+    background: #ffffff;
+}
+
+.gallery-caption h5 {
+    margin: 0 0 8px;
+    color: #7B2CBF;
+    font-weight: 700;
+}
+
+.gallery-caption p {
+    margin: 0;
+    color: #68728a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .gallery-card img {
+        height: 220px;
+    }
+}
+
+    .info-panel,
+    .map-card {
+      border-radius: 28px !important;
+    }
+
+    footer,
+    .footer-color-refresh {
+      background: linear-gradient(135deg, #7040a7 0%, #8c56c7 45%, #24a997 100%) !important;
+    }
+
+    .floating.up {
+      background: linear-gradient(135deg, #7b2cbf, #a25be7) !important;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                met
+                <span>
+                    AMOR
+                </span>
+                fosis
+
+            </a>
+            <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
+                <i class="bi bi-list fs-1">
+                </i>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">
+                            Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">
+                            Servicios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#psicologos">
+                            Psic&oacute;logos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#galeria">
+                            Galer&iacute;a
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">
+                            Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-login" data-bs-target="#loginModal" data-bs-toggle="modal">
+                            <i class="bi bi-person-circle">
+                            </i>
+                            Iniciar Sesi&oacute;n
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="carousel slide" data-bs-ride="carousel" id="principal">
+        <div class="carousel-indicators">
+            <button class="active" data-bs-slide-to="0" data-bs-target="#principal">
+            </button>
+            <button data-bs-slide-to="1" data-bs-target="#principal">
+            </button>
+            <button data-bs-slide-to="2" data-bs-target="#principal">
+            </button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="imagenes/4.jpeg"/>
+                <div class="carousel-caption">
+                    <h1>
+                        Consultorio Psicol&oacute;gico
+                        metAMORfosis
+                    </h1>
+                    <p>
+                        Transformando vidas con amor y bienestar emocional.
+                    </p>
+                    <a class="btn btn-cita" href="#servicios">
+                        Conoce nuestros servicios
+
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/5.jpeg"/>
+                <div class="carousel-caption">
+                    <h1>
+                        Tu salud mental importa
+                    </h1>
+                    <p>
+                        Atenci&oacute;n personalizada para ni&ntilde;os, adolescentes,
+                        adultos y parejas.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/6.jpeg"/>
+                <div class="carousel-caption">
+                    <h1>
+                        Un espacio seguro para escucharte
+                    </h1>
+                    <p>
+                        Confidencialidad, empat&iacute;a y profesionalismo.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#principal">
+            <span class="carousel-control-prev-icon">
+            </span>
+        </button>
+        <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#principal">
+            <span class="carousel-control-next-icon">
+            </span>
+        </button>
+    </div>
+    <section class="py-5" id="nosotros">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge text-bg-info px-4 py-2 rounded-pill">
+                    Con&oacute;cenos
+                </span>
+                <h2 class="display-5 fw-bold mt-3 text-primary">
+                    &iquest;Qui&eacute;nes Somos?
+                </h2>
+                <p class="lead text-muted">
+                    En
+                    <strong>
+                        Consultorio Psicol&oacute;gico metAMORfosis
+                    </strong>
+                    creemos que
+                    cada persona posee la capacidad de transformar su vida mediante el
+                    acompa&ntilde;amiento profesional, la empat&iacute;a y el crecimiento emocional.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded-4 shadow" src="imagenes/puerta.jpeg"/>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bold text-purple">
+                        Transformando vidas
+                    </h3>
+                    <p>
+                        Somos un consultorio psicol&oacute;gico comprometido con el bienestar
+                        emocional de ni&ntilde;os, adolescentes, adultos y familias.
+                  </p>
+                  <p>
+                    Nuestro objetivo es brindar atenci&oacute;n psicol&oacute;gica de calidad,
+                    garantizando un ambiente seguro, &eacute;tico, confidencial y lleno de respeto.
+                </p>
+                <p>
+                    Trabajamos con profesionales altamente capacitados para ayudarte
+                    a enfrentar ansiedad, depresi&oacute;n, estr&eacute;s, problemas familiares,
+                    autoestima y crecimiento personal.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow rounded-4 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="display-4 text-info mb-3">
+                            <i class="bi bi-bullseye">
+                            </i>
+                        </div>
+                        <h3 class="fw-bold">
+                            Misi&oacute;n
+                        </h3>
+                        <p>
+                            Brindar atenci&oacute;n psicol&oacute;gica integral mediante profesionales
+                            capacitados, promoviendo el bienestar emocional, la salud mental y
+                            el desarrollo personal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow rounded-4 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="display-4 text-primary mb-3">
+                            <i class="bi bi-eye-fill">
+                            </i>
+                        </div>
+                        <h3 class="fw-bold">
+                            Visi&oacute;n
+                        </h3>
+                        <p>
+                            Ser un consultorio referente en salud mental por la calidad,
+                            humanismo e innovaci&oacute;n de nuestros servicios psicol&oacute;gicos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow rounded-4 h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="display-4 text-success mb-3">
+                            <i class="bi bi-heart-fill">
+                            </i>
+                        </div>
+                        <h3 class="fw-bold">
+                            Valores
+                        </h3>
+                        <p>
+                            Empat&iacute;a
+                            <br/>
+                            Respeto
+                            <br/>
+                            &Eacute;tica Profesional
+                            <br/>
+                            Confidencialidad
+                            <br/>
+                            Compromiso
+                            <br/>
+                            Responsabilidad
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" id="servicios">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary">     
+                 Nuestros Servicios
+                </span>
+                <h2 class="display-5 fw-bold mt-3">
+                    Atenci&oacute;n Psicol&oacute;gica Profesional
+                </h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-person-heart display-3 text-info">
+                            </i>
+                            <h4 class="mt-3">
+                                Terapia Individual
+                            </h4>
+                            <p>
+                                Atenci&oacute;n personalizada para el manejo de ansiedad, depresi&oacute;n,
+                                estr&eacute;s y autoestima.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-emoji-smile display-3 text-primary">
+                            </i>
+                            <h4 class="mt-3">
+                                Terapia Infantil
+                            </h4>
+                            <p>
+                                Desarrollo emocional, conducta, aprendizaje y autoestima
+                                para ni&ntilde;os.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-people-fill display-3 text-success">
+                            </i>
+                            <h4 class="mt-3">
+                                Terapia Familiar
+                            </h4>
+                            <p>
+                                Fortalecimiento de la comunicaci&oacute;n y resoluci&oacute;n de conflictos
+                                familiares.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-heart-pulse display-3 text-danger">
+                            </i>
+                            <h4 class="mt-3">
+                                Terapia de Pareja
+                            </h4>
+                            <p>
+                                Mejora de la comunicaci&oacute;n, confianza y fortalecimiento de
+                                la relaci&oacute;n.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-clipboard2-pulse display-3 text-warning">
+                            </i>
+                            <h4>
+                                Evaluaci&oacute;n Psicol&oacute;gica
+                            </h4>
+                            <p>
+                                Aplicaci&oacute;n e interpretaci&oacute;n de pruebas psicol&oacute;gicas para un
+                                diagn&oacute;stico profesional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-mortarboard-fill display-3 text-info">
+                            </i>
+                            <h4>
+                                Orientaci&oacute;n Vocacional
+                            </h4>
+                            <p>
+                                Ayudamos a descubrir habilidades, intereses y fortalezas para
+                                elegir una carrera profesional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-journal-richtext display-3 text-primary">
+                            </i>
+                            <h4>
+                                Talleres Psicoeducativos
+                            </h4>
+                            <p>
+                                Charlas, talleres y programas de prevenci&oacute;n en salud mental.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light" id="psicologos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-info text-dark px-3 py-2 rounded-pill">
+                    Nuestro Equipo
+                </span>
+                <h2 class="display-5 fw-bold mt-3">
+                    Conoce a Nuestros Psic&oacute;logos
+                </h2>
+                <p class="lead text-muted">
+                    Profesionales comprometidos con tu bienestar emocional.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <img class="card-img-top" src="imagenes/3.jpeg" style="height:320px;object-fit:cover;"/>
+                        <div class="card-body text-center">
+                            <h4 class="fw-bold">
+                                Lic. Alison Tangara Calle
+                            </h4>
+                            <p class="text-info">
+                                Psicologa Clínica
+                            </p>
+                            <p>
+                                Enfoque cognitivo conductal y terapias breves Adolecentes/Adultos.
+                            </p>
+                            <button class="btn btn-primary rounded-pill" data-bs-target="#psicologo1" data-bs-toggle="modal">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <img class="card-img-top" src="imagenes/señor.jpeg" style="height:320px;object-fit:cover;"/>
+                        <div class="card-body text-center">
+                            <h4 class="fw-bold">
+                                Lic. Martín Choque G.
+                            </h4>
+                            <p class="text-success">
+                                Psicologo Clínico/Forense
+                            </p>
+                            <p>
+                                Enfoque cognitivo conductal/Psicoanalítico adolescentes/Adultos/Adultos mayores
+                            </p>
+                            <button class="btn btn-success rounded-pill" data-bs-target="#psicologo2" data-bs-toggle="modal">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow rounded-4 h-100">
+                        <img class="card-img-top" src="imagenes/2.jpeg" style="height:320px;object-fit:cover;"/>
+                        <div class="card-body text-center">
+                            <h4 class="fw-bold">
+                                Lic. Melanny Tangara Calle
+                            </h4>
+                            <p class="text-primary">
+                                Psicologa Clínica
+                            </p>
+                            <p>
+                                Enfoque clínico sistémico y terapias breves Adolecentes/Adultos.
+                            </p>
+                            <button class="btn btn-info text-white rounded-pill" data-bs-target="#psicologo3" data-bs-toggle="modal">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="psicologo1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white">
+                    <h4>
+                        Lic. Alison Tangara Calle
+                    </h4>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        Especialidad
+                    </h5>
+                    <ul>
+                        <li>
+                            Transtornos Emocionales
+                        </li>
+                        <li>
+                            Autoestima y Autocuidado
+                        </li>
+                        <li>
+                            Orientacion Vocacional
+                        </li>
+                        <li>
+                            Talleres y Capacitaciones
+                        </li>
+                        <li>
+                            Certificados e Informes Psicológocos
+                        </li>
+                    </ul>
+                    <h5>
+                        Contacto
+                    </h5>
+                    <p>
+                        68326739
+                    </p>
+                    <h5>
+                        Horario
+                    </h5>
+                    <p>
+                        Lunes a Viernes
+                        08:00 - 18:00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="psicologo2">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-success text-white">
+                    <h4>
+                        Lic. Martín Choque G.
+                    </h4>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        Especialidad
+                    </h5>
+                    <ul>
+                        <li>
+                            Terapia Individual
+                        </li>
+                        <li>
+                            Atención a Personas de la Tercera Edad
+                        </li>
+                        <li>
+                            Atención en Procesos Judiciales
+                        </li>
+                        <li>
+                            Orientacion Vocacional
+                        </li>
+                        <li>
+                            Asesoramiento 
+                        </li>
+                        <li>
+                            Terapia Familiar
+                        </li>
+                    </ul>
+                    <h5>
+                        Contacto
+                    </h5>
+                    <p>
+                        60439299
+                    </p>
+                    <h5>
+                        Horario
+                    </h5>
+                    <p>
+                        Lunes a S&aacute;bado
+                        09:00 - 17:00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="psicologo3">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header" style="background:#7B2CBF;color:white;">
+                    <h4>
+                        Lic. Melanny Tangara Calle
+                    </h4>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        Especialidad
+                    </h5>
+                    <ul>
+                        <li>
+                            Terapia Familiar
+                        </li>
+                        <li>
+                            Terapia de Pareja
+                        </li>
+                        <li>
+                            Terapia Grupal
+                        </li>
+                        <li>
+                            Terapia Individual
+                        </li>
+                        <li>
+                            Orientación Psicológica
+                        </li>
+                        <li>
+                            Psicoeducación
+                        </li>
+                        <li>
+                            Talleres y Capacitaciones
+                        </li>
+                    </ul>
+                    <h5>
+                        Contacto
+                    </h5>
+                    <p>
+                        78601158
+                    </p>
+                    <h5>
+                        Horario
+                    </h5>
+                    <p>
+                        Lunes a Viernes
+                        10:00 - 19:00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel slide gallery-carousel" data-bs-ride="carousel" id="galeriaCarousel">
+        <div class="carousel-indicators">
+            <button aria-current="true" class="active" data-bs-slide-to="0" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+            <button data-bs-slide-to="1" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+            <button data-bs-slide-to="2" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+            <button data-bs-slide-to="3" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+            <button data-bs-slide-to="4" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+            <button data-bs-slide-to="5" data-bs-target="#galeriaCarousel" type="button">
+            </button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img alt="Consultorio metAMORfosis" class="d-block w-100" src="imagenes/8.jpeg"/>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <section class="py-5 bg-light" id="galeria">
+                <div class="container">
+                 <div class="text-center mb-5 reveal">
+                  <span class="badge bg-info text-dark px-4 py-2 rounded-pill">Galería</span>
+                  <h2 class="display-5 fw-bold mt-3">Nuestro consultorio</h2>
+                  <p class="lead text-muted mb-0">Conoce algunos de nuestros espacios.</p>
+                 </div>
+                 <div class="row g-4 gallery-grid">
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/12.jpeg" alt="Recepción del consultorio"/><div class="gallery-caption"><h5>Un espacio acogedor para recibirte.</5></div></div></div>
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/11.jpeg" alt="Sala del consultorio"/><div class="gallery-caption"><h5> Un ambiente tranquilo y cómodo.</5></div></div></div>
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/10.jpeg" alt="Espacio de atención"/><div class="gallery-caption"><h5>Privacidad para cada proceso.</5></div></div></div>
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/9.jpeg" alt="Área de atención"/><div class="gallery-caption"><h5>Diseñada para conversar con confianza.</5></div></div></div>
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/8.jpeg" alt="Ambiente del consultorio"/><div class="gallery-caption"><h5>Calidez y tranquilidad en cada espacio.</5></div></div></div>
+                  <div class="col-md-6 col-lg-4"><div class="gallery-card"><img src="imagenes/7.jpeg" alt="Consultorio psicológico"/><div class="gallery-caption"><h5>Un lugar pensado para tu bienestar.</5></div></div></div>
+                 </div>
+                </div>
+               </section>
+    <section class="location-section py-5" id="contacto">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <span class="badge bg-primary px-4 py-2 rounded-pill">
+                    Encu&eacute;ntranos
+                </span>
+                <h2 class="display-5 fw-bold mt-3">
+                    Informaci&oacute;n y ubicaci&oacute;n
+                </h2>
+                <p class="lead text-muted">
+                    Conoce nuestros datos de contacto y la zona donde se encuentra el consultorio.
+                </p>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5 reveal">
+                    <div class="info-panel h-100">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="bi bi-geo-alt-fill">
+                                </i>
+                            </div>
+                            <div>
+                                <strong>
+                                    Direcci&oacute;n
+                                </strong>
+                                <p>
+                                    Oruro - Bolivia
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="bi bi-telephone-fill">
+                                </i>
+                            </div>
+                            <div>
+                                <strong>
+                                    Tel&eacute;fono
+                                </strong>
+                                <p>
+                                    +591 78601158
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="bi bi-envelope-fill">
+                                </i>
+                            </div>
+                            <div>
+                                <strong>
+                                    Correo
+                                </strong>
+                                <p>
+                                    psi.mel.tangara@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="bi bi-clock-fill">
+                                </i>
+                            </div>
+                            <div>
+                                <strong>
+                                    Horario
+                                </strong>
+                                <p>
+                                    Lunes a Viernes &middot; 08:00 - 18:00
+                                </p>
+                            </div>
+                        </div>
+                        <div class="location-note">
+                            <i class="bi bi-info-circle-fill">
+                            </i>
+                            <span>
+                                Esta secci&oacute;n es &uacute;nicamente informativa. Las citas se gestionan desde el &aacute;rea privada 
+                                despu&eacute;s de iniciar sesi&oacute;n.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal">
+                    <div class="map-card h-100">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943113.6222902643!2d-68.34288451885998!3d-17.97204583962908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e2b183df5c9cc1%3A0xa344f3cec6ec686b!2sGabinete%20Psicol%C3%B3gico%20metAMORfosis!5e0!3m2!1ses-419!2sbo!4v1789993752473!5m2!1ses-419!2sbo" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-color-refresh" style="background:#1b1b2f;color:white;padding:60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                   <h3 style="color:#2EC4B6;">
+                    metAMORfosis
+                </h3>
+                <p>
+                    Transformando vidas mediante la atenci&oacute;n psicol&oacute;gica
+                    profesional y humana.
+                </p>
+            </div>
+           <div class="col-lg-4">
+            <h4>
+                Enlaces
+            </h4>
+            <ul class="list-unstyled">
+                <li>
+                    <a class="text-white text-decoration-none" href="#">
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white text-decoration-none" href="#nosotros">
+                        Nosotros
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white text-decoration-none" href="#servicios">
+                        Servicios
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white text-decoration-none" href="#psicologos">
+                        Psic&oacute;logos
+                    </a>
+                </li>
+                <li>
+                    <a class="text-white text-decoration-none" href="#contacto">
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-4">
+            <h4>
+                S&iacute;guenos
+            </h4>
+            <div class="fs-2">
+                <i class="bi bi-facebook me-3">
+                </i>
+                <i class="bi bi-instagram me-3">
+                </i>
+                <i class="bi bi-whatsapp me-3">
+                </i>
+                <i class="bi bi-envelope-fill">
+                </i>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-5"/>
+    <div class="text-center">
+        &copy; 2026 Consultorio Psicol&oacute;gico
+        <strong style="color:#2EC4B6;">
+            metAMORfosis
+        </strong>
+        Todos los derechos reservados.
+    </div>
+</div>
+</footer>
+<a href="https://wa.me/59178601158" style="
+position:fixed; bottom:25px; right:25px; width:65px; height:65px; background:#25D366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:0 8px 25px rgba(0,0,0,.3); z-index:9999; text-decoration:none;" target="_blank">
+    <i class="bi bi-whatsapp">
+    </i>
+</a>
+<a href="#" style=" position:fixed; bottom:100px; right:25px; width:55px; height:55px; background:#7B2CBF; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; text-decoration:none; z-index:9999;">
+    <i class="bi bi-arrow-up">
+   </i>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+</script>
+<div aria-hidden="true" class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content login-modal border-0 rounded-4 overflow-hidden">
+            <div class="modal-header login-head text-white border-0 p-4">
+                <div>
+                    <span class="small text-white-50">
+                        &Aacute;rea privada
+                    </span>
+                    <h4 class="modal-title fw-bold mb-0">
+                        <i class="bi bi-person-circle me-2">
+                        </i>
+                        Iniciar sesi&oacute;n
+                    </h4>
+                </div>
+                <button aria-label="Cerrar" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button">
+                </button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <form id="accesoForm" novalidate="">
+                    <label class="form-label fw-semibold">
+                        Correo electr&oacute;nico
+                    </label>
+                    <div class="input-icon-wrap mb-3">
+                        <i class="bi bi-envelope">
+                        </i>
+                        <input autocomplete="username" class="form-control" id="correoAcceso" placeholder="tu@correo.com" required="" type="email"/>
+                    </div>
+                    <label class="form-label fw-semibold">
+                        Contrase&ntilde;a
+                    </label>
+                    <div class="input-group mb-3 password-wrap">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock">
+                            </i>
+                        </span>
+                        <input autocomplete="current-password" class="form-control" id="claveAcceso" placeholder="Ingresa tu contrase&ntilde;a" required="" type="password"/>
+                        <button aria-label="Mostrar contrase&ntilde;a" class="btn btn-outline-secondary" id="verClave" type="button">
+                            <i class="bi bi-eye">
+                            </i>
+                        </button>
+                    </div>
+                    
+<button class="btn btn-login w-100 py-3" type="submit">
+    Ingresar
+    <i class="bi bi-arrow-right ms-1"></i>
+</button>
+
+<div class="text-center mt-3">
+    <span class="small">¿No tienes una cuenta?</span>
+    <button
+        class="btn btn-link p-0 text-decoration-none"
+        type="button"
+        id="mostrarRegistro">
+        Crear cuenta
+    </button>
+</div>
+
+<div class="small mt-3" id="loginMsg" role="alert"></div>
+
+                </form>
+                
+<form id="registroForm" style="display:none;" novalidate>
+    <h5 class="fw-bold mb-3">Crear cuenta de paciente</h5>
+
+    <label class="form-label fw-semibold">Nombre</label>
+    <input class="form-control mb-3" id="registroNombre"
+           type="text" required placeholder="Tu nombre">
+
+    <label class="form-label fw-semibold">Apellido</label>
+    <input class="form-control mb-3" id="registroApellido"
+           type="text" required placeholder="Tu apellido">
+
+    <label class="form-label fw-semibold">Teléfono</label>
+    <input class="form-control mb-3" id="registroTelefono"
+           type="tel" placeholder="Tu número de teléfono">
+
+    <label class="form-label fw-semibold">Correo electrónico</label>
+    <input class="form-control mb-3" id="registroCorreo"
+           type="email" required placeholder="tu@correo.com">
+
+    <label class="form-label fw-semibold">Contraseña</label>
+    <input class="form-control mb-3" id="registroPassword"
+           type="password" required minlength="6"
+           placeholder="Mínimo 6 caracteres">
+
+    <button class="btn btn-login w-100 py-3" type="submit">
+        Crear cuenta
+    </button>
+
+    <div class="small mt-3" id="registroMsg" role="alert"></div>
+
+    <div class="text-center mt-3">
+        <button class="btn btn-link p-0" id="volverLogin"
+                type="button">
+            Volver a ingresar
+        </button>
+    </div>
+</form>
+
+            </div>
+        </div>
+    </div>
+<script>
+(function () {
+    const eye = document.getElementById('verClave');
+    const pass = document.getElementById('claveAcceso');
+    const form = document.getElementById('accesoForm');
+    const msg = document.getElementById('loginMsg');
+    
+    const registroForm = document.getElementById('registroForm');
+    const mostrarRegistro = document.getElementById('mostrarRegistro');
+    const volverLogin = document.getElementById('volverLogin');
+
+    if (mostrarRegistro && form && registroForm) {
+        mostrarRegistro.addEventListener('click', function () {
+            form.style.display = 'none';
+            registroForm.style.display = 'block';
+            if (msg) msg.textContent = '';
+        });
+    }
+
+    if (volverLogin && form && registroForm) {
+        volverLogin.addEventListener('click', function () {
+            registroForm.style.display = 'none';
+            form.style.display = 'block';
+
+            const registroMsg = document.getElementById('registroMsg');
+            if (registroMsg) registroMsg.textContent = '';
+        });
+    }
+
+
+    // Mostrar u ocultar contraseña
+    if (eye && pass) {
+        eye.addEventListener('click', function () {
+            const mostrar = pass.type === 'password';
+            pass.type = mostrar ? 'text' : 'password';
+            eye.innerHTML = mostrar
+                ? '<i class="bi bi-eye-slash"></i>'
+                : '<i class="bi bi-eye"></i>';
+        });
+    }
+
+    // Cuentas de administrador
+    const administradores = [
+        {
+            email: 'admin@metamorfosis.com',
+            password: 'admin123',
+            nombre: 'Administrador'
+        },
+        {
+            email: 'keylanogalestroncoso@gmail.com',
+            password: '31102008',
+            nombre: 'Administrador'
+        }
+    ];
+
+    // Cuentas de pacientes de prueba
+    const pacientesPrueba = [
+        {
+            email: 'paciente@metamorfosis.com',
+            password: 'paciente123',
+            nombre: 'Paciente'
+        },
+        {
+            email: 'belen@gmail.com',
+            password: 'belen123',
+            nombre: 'Belen Mar'
+        }
+    ];
+
+    // Guardar la sesión
+    function guardarSesion(tipo, correo, nombre) {
+        const datos = {
+            tipo: tipo,
+            correo: correo,
+            nombre: nombre
+        };
+
+        localStorage.setItem(
+            'metaUsuarioActivo',
+            JSON.stringify(datos)
+        );
+        localStorage.setItem('tipoUsuario', tipo);
+        localStorage.setItem('correoUsuario', correo);
+        localStorage.setItem('nombreUsuario', nombre);
+
+        sessionStorage.setItem('tipoUsuario', tipo);
+        sessionStorage.setItem('correoUsuario', correo);
+        sessionStorage.setItem('nombreUsuario', nombre);
+    }
+
+    // Cerrar sesión
+    function cerrarSesion() {
+        localStorage.removeItem('metaUsuarioActivo');
+        localStorage.removeItem('tipoUsuario');
+        localStorage.removeItem('correoUsuario');
+        localStorage.removeItem('nombreUsuario');
+
+        sessionStorage.removeItem('tipoUsuario');
+        sessionStorage.removeItem('correoUsuario');
+        sessionStorage.removeItem('nombreUsuario');
+
+        window.location.href = 'index.html';
+    }
+
+    // Mostrar el menú de perfil con el diseño existente
+    function mostrarPerfil() {
+        const nav = document.querySelector('.navbar-nav');
+        if (!nav) return;
+
+        const datosGuardados = localStorage.getItem('metaUsuarioActivo');
+        let datos = null;
+
+        try {
+            datos = JSON.parse(datosGuardados || 'null');
+        } catch (error) {
+            datos = null;
+        }
+
+        const tipo = datos?.tipo || localStorage.getItem('tipoUsuario');
+        const correo = datos?.correo || localStorage.getItem('correoUsuario');
+        const nombre = datos?.nombre || localStorage.getItem('nombreUsuario');
+
+        let item = document.getElementById('perfilUsuario');
+
+        // Si no hay sesión, dejar el botón original
+        if (!tipo || !correo) {
+            if (item) item.remove();
+            return;
+        }
+
+        // Ocultar el botón original de inicio de sesión
+        const botonOriginal = nav.querySelector(
+            '[data-bs-target="#loginModal"]'
+        );
+
+        if (botonOriginal) {
+            botonOriginal.closest('li').style.display = 'none';
+        }
+
+        if (!item) {
+            item = document.createElement('li');
+            item.id = 'perfilUsuario';
+            item.className = 'nav-item dropdown ms-3';
+            nav.appendChild(item);
+        }
+
+        const destino = tipo === 'admin'
+            ? 'administradores.html'
+            : 'reserva.html';
+
+        const opcion = tipo === 'admin'
+            ? 'Registros'
+            : 'Citas reservadas';
+
+        item.innerHTML = `
+            <button
+                class="btn btn-login dropdown-toggle"
+                type="button"
+                id="perfilDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+                Perfil
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4"
+                aria-labelledby="perfilDropdown">
+                <li>
+                    <span class="dropdown-item-text small text-muted">
+                        ${nombre || correo}
+                    </span>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <a class="dropdown-item py-2" href="${destino}">
+                        <i class="bi ${
+                            tipo === 'admin'
+                            ? 'bi-journal-text'
+                            : 'bi-calendar-check'
+                        } me-2"></i>
+                        ${opcion}
+                    </a>
+                </li>
+                <li>
+                    <button class="dropdown-item py-2 text-danger"
+                        type="button" id="cerrarSesionBtn">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Cerrar sesión
+                    </button>
+                </li>
+            </ul>
+        `;
+
+        document.getElementById('cerrarSesionBtn')
+            .addEventListener('click', cerrarSesion);
+    }
+
+    // Registrar paciente en la base de datos SQLite
+    if (registroForm) {
+        registroForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const registroMsg = document.getElementById('registroMsg');
+            const nombre = document.getElementById('registroNombre').value.trim();
+            const apellido = document.getElementById('registroApellido').value.trim();
+            const telefono = document.getElementById('registroTelefono').value.trim();
+            const email = document.getElementById('registroCorreo').value.trim().toLowerCase();
+            const password = document.getElementById('registroPassword').value;
+
+            if (!nombre || !apellido || !email || password.length < 6) {
+                registroMsg.className = 'small mt-3 text-danger';
+                registroMsg.textContent = 'Completa los campos obligatorios. La contraseña debe tener al menos 6 caracteres.';
+                return;
+            }
+
+            try {
+                const respuesta = await fetch('/api/registro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        apellido,
+                        telefono,
+                        email,
+                        password
+                    })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (!respuesta.ok || !resultado.success) {
+                    throw new Error(resultado.message || 'No se pudo crear la cuenta.');
+                }
+
+                registroMsg.className = 'small mt-3 text-success';
+                registroMsg.textContent = '¡Cuenta creada! Ya puedes iniciar sesión.';
+
+                registroForm.reset();
+
+                setTimeout(function () {
+                    registroForm.style.display = 'none';
+                    form.style.display = 'block';
+                    document.getElementById('correoAcceso').value = email;
+                    document.getElementById('claveAcceso').value = '';
+                }, 1200);
+
+            } catch (error) {
+                registroMsg.className = 'small mt-3 text-danger';
+                registroMsg.textContent = error.message || 'No se pudo conectar con el servidor.';
+            }
+        });
+    }
+
+    // Iniciar sesión
+    
+if (form) {
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const correo = document.getElementById('correoAcceso')
+            .value.trim().toLowerCase();
+
+        const password = document.getElementById('claveAcceso').value;
+
+        if (msg) {
+            msg.textContent = 'Verificando datos...';
+            msg.className = 'small mt-3 text-center';
+        }
+
+        try {
+            const respuesta = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: correo,
+                    password: password
+                })
+            });
+
+            const resultado = await respuesta.json();
+
+            if (!respuesta.ok || !resultado.success) {
+                throw new Error(
+                    resultado.message || 'Correo o contraseña incorrectos.'
+                );
+            }
+
+            // Guardar la sesión del usuario
+            guardarSesion(
+                resultado.tipo,
+                resultado.email,
+                resultado.nombre
+            );
+
+            // Redirigir según el tipo de cuenta
+            if (resultado.tipo === 'admin') {
+                window.location.href = 'administradores.html';
+            } else {
+                window.location.href = 'reserva.html';
+            }
+
+        } catch (error) {
+            if (msg) {
+                msg.textContent = error.message ||
+                    'No se pudo conectar con el servidor.';
+                msg.className = 'small mt-3 text-danger';
+            }
+        }
+    });
+}
+
+
+    // Mantener los efectos existentes
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        el.classList.add('reveal');
+    });
+
+    // Recuperar sesión al abrir index
+    mostrarPerfil();
+})();
+</script>
+</div>
+</body>
+</html>
+

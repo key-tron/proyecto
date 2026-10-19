@@ -1,0 +1,1634 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+        Administraci&oacute;n - metAMORfosis
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+:root {
+    --purple:#7B2CBF;
+    --lilac:#C79BEF;
+    --turq:#2EC4B6;
+    --blue:#4EA8DE;
+    --pink:#EF6AA8;
+    --mint:#BFEFE6;
+    --peach:#FFE0D1;
+    --ink:#28243A
+}
+* {
+    box-sizing:border-box
+}
+body {
+    padding-top:76px;
+    font-family:'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:radial-gradient(circle at 5% 8%,rgba(199,155,239,.22),transparent 22%),radial-gradient(circle at 96% 15%,rgba(205,235,250,.26),transparent 24%),linear-gradient(180deg,#fffaff,#fff 52%,#fff8fb)
+}
+.navbar {
+    background:rgba(255,255,255,.93);
+    backdrop-filter:blur(15px);
+    box-shadow:0 7px 28px rgba(60,34,92,.08)
+}
+.navbar-brand {
+    font-weight:800;
+    font-size:28px;
+    color:var(--purple)!important
+}
+.navbar-brand span {
+    color:var(--turq)
+}
+.nav-link {
+    color:#4d4e5b!important;
+    font-weight:600;
+    border-radius:999px;
+    padding:9px 12px!important
+}
+.nav-link:hover {
+    background:#f4eafe;
+    color:var(--purple)!important
+}
+.btn-exit {
+    border:0;
+    border-radius:999px;
+    padding:10px 20px;
+    color:#fff;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--purple),var(--blue),var(--pink));
+    box-shadow:0 11px 25px rgba(123,44,191,.17)
+}
+main {
+    padding:32px 0 70px
+}
+.hero {
+    position:relative;
+    overflow:hidden;
+    border-radius:34px;
+    padding:38px;
+    background:linear-gradient(135deg,#7B2CBF,#665fd1 38%,#4EA8DE 70%,#2EC4B6);
+    color:#fff;
+    box-shadow:0 25px 70px rgba(75,50,130,.20)
+}
+.hero:after {
+    content:"";
+    position:absolute;
+    right:-80px;
+    top:-100px;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,.12)
+}
+.hero>* {
+    position:relative;
+    z-index:1
+}
+.panel {
+    background:rgba(255,255,255,.95);
+    border:1px solid rgba(123,44,191,.08);
+    border-radius:28px;
+    padding:28px;
+    box-shadow:0 18px 48px rgba(66,39,94,.10);
+    transition:.3s
+}
+.panel:hover {
+    transform:translateY(-4px);
+    box-shadow:0 25px 58px rgba(66,39,94,.14)
+}
+.pill {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#f0e7ff,#e6fbf8);
+    color:var(--purple);
+    font-weight:850;
+    font-size:.8rem
+}
+.metric {
+    height:100%;
+    border-radius:24px;
+    padding:22px;
+    background:linear-gradient(145deg,#fff,#faf4ff);
+    border:1px solid #eee4fa;
+    box-shadow:0 14px 35px rgba(75,46,105,.08)
+}
+.metric:nth-child(2) {
+    background:linear-gradient(145deg,#fff,#fff2f7)
+}
+.metric:nth-child(3) {
+    background:linear-gradient(145deg,#fff,#f0faff)
+}
+.metric-icon {
+    width:54px;
+    height:54px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    background:#eafff9;
+    color:#148d7b;
+    font-size:22px
+}
+.metric:nth-child(2) .metric-icon {
+    background:#fff0f6;
+    color:#d54d88
+}
+.metric:nth-child(3) .metric-icon {
+    background:#eef9ff;
+    color:#3a91bf
+}
+.form-control,.form-select {
+    border-radius:15px;
+    border:1px solid #e2ddea;
+    padding:12px 14px
+}
+.form-control:focus,.form-select:focus {
+    border-color:#a87ccf;
+    box-shadow:0 0 0 .2rem rgba(123,44,191,.10)
+}
+.btn-main {
+    border:0;
+    border-radius:15px;
+    color:#fff;
+    padding:12px 18px;
+    font-weight:850;
+    background:linear-gradient(90deg,var(--turq),var(--purple),var(--pink));
+    background-size:200% 100%;
+    transition:.35s
+}
+.btn-main:hover {
+    background-position:100% 0;
+    transform:translateY(-2px)
+}
+.btn-soft {
+    border:0;
+    border-radius:14px;
+    background:#f4edff;
+    color:var(--purple);
+    font-weight:800;
+    padding:10px 14px
+}
+.table-wrap {
+    overflow:auto;
+    border-radius:20px;
+    border:1px solid #eee7f4
+}
+.table {
+    margin:0
+}
+.table thead th {
+    background:#f7f1ff;
+    color:#65487c;
+    white-space:nowrap;
+    border:0
+}
+.table tbody tr {
+    transition:.2s
+}
+.table tbody tr:hover {
+    background:#fff7fb
+}
+.badge-source {
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:999px;
+    font-size:.72rem;
+    font-weight:850;
+    background:#eefbf9;
+    color:#158878
+}
+.slot-list {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px
+}
+.slot-check {
+    position:relative
+}
+.slot-check input {
+    position:absolute;
+    opacity:0
+}
+.slot-check label {
+    display:block;
+    text-align:center;
+    padding:12px 8px;
+    border:1px solid #e7deef;
+    border-radius:14px;
+    background:#fff;
+    font-weight:850;
+    color:#725684;
+    cursor:pointer;
+    transition:.2s
+}
+.slot-check input:checked+label {
+    background:linear-gradient(90deg,#2EC4B6,#7B2CBF);
+    color:#fff;
+    border-color:transparent;
+    box-shadow:0 10px 20px rgba(123,44,191,.14)
+}
+.availability-item {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:15px 16px;
+    border-radius:18px;
+    background:linear-gradient(145deg,#effffb,#f4efff);
+    border:1px solid #e4dff1;
+    margin-bottom:10px
+}
+.availability-item strong {
+    font-size:.93rem
+}
+.status {
+    display:inline-flex;
+    padding:6px 10px;
+    border-radius:999px;
+    background:#def8f1;
+    color:#147d6d;
+    font-weight:850;
+    font-size:.74rem
+}
+.schedule-card {
+    padding:20px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#fff,#faf4ff);
+    border-left:5px solid var(--purple);
+    box-shadow:0 10px 25px rgba(72,42,103,.06)
+}
+.footer {
+    background:linear-gradient(135deg,#302048,#633e8d,#2a9f97);
+    color:#fff;
+    padding:48px 0
+}
+.floating {
+    position:fixed;
+    right:22px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-decoration:none;
+    z-index:9999;
+    box-shadow:0 14px 28px rgba(0,0,0,.18)
+}
+.wa {
+    bottom:22px;
+    background:#25D366;
+    font-size:24px
+}
+.up {
+    bottom:86px;
+    background:var(--purple)
+}
+@media(max-width:800px) {
+    .hero {
+        padding:26px
+    }
+    .slot-list {
+        grid-template-columns:repeat(2,1fr)
+    }
+}
+  </style>
+  <style id="metamor-vibrant-visual">
+   :root {
+    --v-purple:#6D28D9;
+    --v-purple2:#8B5CF6;
+    --v-magenta:#E83E8C;
+    --v-pink:#FF77B7;
+    --v-turq:#11BFAE;
+    --v-turq2:#25D9C7;
+    --v-blue:#36A9E1;
+    --v-sky:#69C7F5;
+    --v-yellow:#FFD166;
+    --v-orange:#FF9F68;
+    --v-cream:#FFF7FC;
+    --v-ink:#29223B;
+}
+html {
+    scroll-behavior:smooth
+}
+body {
+    color:var(--v-ink)!important;
+    background:
+    radial-gradient(circle at 4% 4%,rgba(139,92,246,.20),transparent 19%),
+    radial-gradient(circle at 96% 12%,rgba(37,217,199,.19),transparent 19%),
+    radial-gradient(circle at 15% 88%,rgba(255,119,183,.13),transparent 22%),
+    linear-gradient(180deg,#fff7fd 0%,#ffffff 38%,#f7fbff 70%,#fff4f9 100%)!important;
+}
+.navbar {
+    background:rgba(255,255,255,.94)!important;
+    border-bottom:2px solid rgba(109,40,217,.08)!important;
+    box-shadow:0 8px 28px rgba(67,35,104,.12)!important;
+}
+.navbar-brand {
+    color:var(--v-purple)!important
+}
+.navbar-brand span {
+    color:var(--v-turq)!important
+}
+.nav-link {
+    font-weight:700!important
+}
+.nav-link:hover {
+    color:var(--v-purple)!important;
+    background:linear-gradient(90deg,#f5eaff,#e7fffa)!important
+}
+.btn-login,.btn-exit {
+    background:linear-gradient(90deg,var(--v-purple),var(--v-magenta),var(--v-turq))!important;
+    background-size:220% 100%!important;
+    box-shadow:0 12px 28px rgba(109,40,217,.22)!important;
+    transition:background-position .4s,transform .25s,box-shadow .25s!important;
+}
+.btn-login:hover,.btn-exit:hover {
+    background-position:100% 0!important;
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(109,40,217,.28)!important
+}
+#principal {
+    box-shadow:0 28px 70px rgba(77,34,117,.18)
+}
+#principal .carousel-item img {
+    filter:brightness(.61) saturate(1.26) contrast(1.04)!important;
+    transition:transform 8s ease,filter .5s ease;
+}
+#principal .carousel-item.active img {
+    transform:scale(1.045)
+}
+.carousel-caption h1 {
+    color:#fff!important;
+    text-shadow:0 4px 22px rgba(33,13,58,.52)!important
+}
+.carousel-caption p {
+    color:#fff!important;
+    text-shadow:0 2px 12px rgba(33,13,58,.48)!important
+}
+.btn-cita {
+    background:linear-gradient(90deg,var(--v-turq),var(--v-blue),var(--v-purple))!important;
+    box-shadow:0 15px 30px rgba(17,191,174,.28)!important;
+    transition:transform .25s,box-shadow .25s!important;
+}
+.btn-cita:hover {
+    transform:translateY(-3px) scale(1.03)!important;
+    box-shadow:0 20px 38px rgba(17,191,174,.34)!important
+}
+section {
+    overflow:hidden
+}
+section.py-5:before {
+    content:"";
+    position:absolute;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    right:-90px;
+    top:-110px;
+    background:radial-gradient(circle,rgba(139,92,246,.16),rgba(139,92,246,0));
+    pointer-events:none;
+}
+#nosotros {
+    background:linear-gradient(135deg,#fff0fa 0%,#f3ecff 46%,#eafffc 100%)!important
+}
+#servicios {
+    background:linear-gradient(135deg,#12bfae 0%,#25cfd4 28%,#5c7bea 63%,#8746d8 100%)!important
+}
+#servicios h2,#servicios h3,#servicios p {
+    color:#fff!important
+}
+#servicios .card {
+    background:linear-gradient(145deg,rgba(255,255,255,.99),rgba(247,239,255,.96))!important
+}
+#psicologos {
+    background:linear-gradient(135deg,#f2ebff 0%,#fff0f8 52%,#e7fbff 100%)!important
+}
+#galeria {
+    background:linear-gradient(135deg,#e9fbff 0%,#f6edff 52%,#fff0f8 100%)!important
+}
+#contacto {
+    background:linear-gradient(135deg,#fff0f7 0%,#f1ebff 50%,#e8fbff 100%)!important
+}
+.card {
+    border:2px solid rgba(109,40,217,.08)!important;
+    background:linear-gradient(145deg,#fff 0%,#fff5fb 45%,#f0fbff 100%)!important;
+    box-shadow:0 18px 42px rgba(72,36,105,.13)!important;
+    border-radius:26px!important;
+    transition:transform .3s,box-shadow .3s,border-color .3s!important;
+}
+.card:hover {
+    transform:translateY(-9px) rotate(.25deg)!important;
+    border-color:rgba(232,62,140,.20)!important;
+    box-shadow:0 25px 52px rgba(72,36,105,.18)!important
+}
+.info-panel,.map-card {
+    box-shadow:0 22px 50px rgba(70,34,111,.14)!important
+}
+.info-icon {
+    background:linear-gradient(135deg,#e8fffb,#eadfff,#fff0f7)!important;
+    color:var(--v-purple)!important
+}
+.location-note {
+    background:linear-gradient(90deg,#f1e9ff,#e6fffb,#fff0f7)!important;
+    border:1px solid rgba(109,40,217,.09)
+}
+.map-card {
+    border:7px solid rgba(255,255,255,.95)!important
+}
+.gallery-carousel {
+    border:7px solid rgba(255,255,255,.92);
+    box-shadow:0 30px 70px rgba(55,30,92,.22)!important
+}
+.gallery-carousel .carousel-item img {
+    filter:brightness(.64) saturate(1.25)!important
+}
+.gallery-carousel .carousel-caption span {
+    background:linear-gradient(90deg,rgba(109,40,217,.90),rgba(232,62,140,.88),rgba(17,191,174,.86))!important
+}
+.login-head,.modal-header {
+    background:linear-gradient(135deg,var(--v-purple),var(--v-magenta),var(--v-turq))!important
+}
+.login-modal {
+    border:0!important;
+    box-shadow:0 30px 90px rgba(48,18,78,.30)!important
+}
+.btn-ingresar {
+    background:linear-gradient(90deg,var(--v-turq),var(--v-blue),var(--v-purple))!important;
+    box-shadow:0 12px 25px rgba(36,146,190,.22)
+}
+.form-control:focus,.form-select:focus {
+    border-color:var(--v-purple)!important;
+    box-shadow:0 0 0 .22rem rgba(109,40,217,.12)!important
+}
+main .hero {
+    background:linear-gradient(135deg,#6425C9 0%,#8D4FEA 24%,#4F7DE4 54%,#12BFAE 82%,#25D9C7 100%)!important;
+    box-shadow:0 30px 70px rgba(77,34,130,.25)!important;
+}
+main .hero:before {
+    background:rgba(255,119,183,.18)!important
+}
+main .hero:after {
+    background:rgba(255,209,102,.16)!important
+}
+.panel {
+    border:2px solid rgba(109,40,217,.08)!important;
+    background:linear-gradient(145deg,#ffffff 0%,#fff7fc 48%,#effdff 100%)!important;
+    box-shadow:0 22px 52px rgba(64,35,99,.13)!important;
+    border-radius:30px!important;
+    padding:32px!important;
+}
+.panel:hover {
+    box-shadow:0 28px 62px rgba(64,35,99,.17)!important;
+    transform:translateY(-5px)
+}
+.section-pill,.pill {
+    background:linear-gradient(90deg,#eadcff,#ffe4f1,#dcfbf6)!important;
+    color:var(--v-purple)!important;
+    border:1px solid rgba(109,40,217,.08)!important;
+}
+.metric {
+    border:2px solid rgba(109,40,217,.08)!important;
+    border-radius:26px!important;
+    background:linear-gradient(145deg,#fff,#fff2fa 52%,#f0fbff)!important;
+    box-shadow:0 18px 42px rgba(66,35,105,.12)!important;
+    position:relative;
+    overflow:hidden;
+}
+.metric:after {
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:6px;
+    background:linear-gradient(90deg,var(--v-purple),var(--v-pink),var(--v-turq))
+}
+.metric:nth-child(2) {
+    background:linear-gradient(145deg,#fff,#fff0f6 52%,#fff9ec)!important
+}
+.metric:nth-child(3) {
+    background:linear-gradient(145deg,#fff,#eefaff 52%,#eefcf8)!important
+}
+.metric-icon {
+    background:linear-gradient(135deg,#ddfff8,#e8deff)!important;
+    color:var(--v-purple)!important
+}
+.calendar-shell {
+    background:linear-gradient(145deg,#fff,#fff4fb 52%,#effdff)!important;
+    border:2px solid rgba(109,40,217,.10)!important;
+    box-shadow:0 20px 48px rgba(65,34,103,.12)!important
+}
+.month-btn {
+    background:linear-gradient(135deg,#eadcff,#d8fff8)!important;
+    color:var(--v-purple)!important
+}
+.day {
+    border:2px solid #eee6f5!important;
+    background:#fff!important
+}
+.day:hover:not(.locked) {
+    border-color:#b993f4!important;
+    background:#faf4ff!important
+}
+.day.available {
+    background:linear-gradient(145deg,#dffff8,#c9fff4)!important;
+    border-color:#73dbc9!important
+}
+.day.slot {
+    background:linear-gradient(145deg,#fff3b5,#ffe5c0)!important;
+    border-color:#f4c66f!important
+}
+.day.complete {
+    background:linear-gradient(145deg,#ffd5e6,#ffe4ef)!important;
+    border-color:#f0a2c1!important
+}
+.day.mine {
+    background:linear-gradient(145deg,#ded1ff,#f0ddff)!important;
+    border-color:#aa83e8!important
+}
+.day.locked {
+    background:#f2eef5!important;
+    color:#a29caf!important
+}
+.legend {
+    background:linear-gradient(90deg,#fff7fb,#f1ecff,#ecfffb)!important;
+    border-radius:18px;
+    padding:14px 16px;
+    margin-top:16px!important;
+    border:1px solid rgba(109,40,217,.08)
+}
+.selection {
+    background:linear-gradient(90deg,#f1e7ff,#ffe9f3,#e2fff9)!important;
+    border:2px solid rgba(109,40,217,.10)!important
+}
+.time-btn {
+    background:linear-gradient(145deg,#fff,#f8efff)!important;
+    border:2px solid #e7dcf3!important;
+    color:#69458a!important;
+    box-shadow:0 7px 16px rgba(77,44,108,.06)
+}
+.time-btn:hover:not(:disabled) {
+    background:linear-gradient(90deg,#e9fffb,#efe5ff)!important;
+    border-color:#b68ae8!important
+}
+.time-btn.active {
+    background:linear-gradient(90deg,var(--v-turq),var(--v-blue),var(--v-purple))!important;
+    box-shadow:0 12px 25px rgba(70,100,180,.20)!important
+}
+.time-btn:disabled {
+    background:linear-gradient(145deg,#ffe6ef,#fff1f5)!important;
+    color:#c26d8b!important
+}
+.mini-note {
+    background:linear-gradient(90deg,#fff0f7,#f0eaff,#e8fffb)!important;
+    border:2px solid rgba(109,40,217,.08)!important
+}
+.table-wrap {
+    border:2px solid #e7dcf2!important;
+    box-shadow:0 14px 35px rgba(70,36,103,.08)
+}
+.table thead th {
+    background:linear-gradient(90deg,#eadcff,#ffe5f0,#ddfbf7)!important;
+    color:#5e3f78!important
+}
+.table tbody tr:nth-child(even) {
+    background:#fffbfe
+}
+.table tbody tr:hover {
+    background:#f5efff!important
+}
+.slot-check label {
+    background:linear-gradient(145deg,#fff,#f8f0ff)!important;
+    border:2px solid #e7dcf3!important
+}
+.slot-check input:checked+label {
+    background:linear-gradient(90deg,var(--v-turq),var(--v-blue),var(--v-purple))!important;
+    box-shadow:0 12px 25px rgba(72,80,180,.18)!important
+}
+.availability-item {
+    background:linear-gradient(145deg,#e7fffa,#f0e6ff 58%,#fff0f7)!important;
+    border:2px solid rgba(109,40,217,.09)!important;
+    box-shadow:0 12px 28px rgba(67,35,103,.08)
+}
+.schedule-card {
+    background:linear-gradient(145deg,#fff,#fff1f7 55%,#edfffb)!important;
+    border-left:7px solid var(--v-purple)!important
+}
+.status {
+    background:linear-gradient(90deg,#d9fff5,#e8ddff)!important;
+    color:#5b3680!important
+}
+.btn-main {
+    background:linear-gradient(90deg,var(--v-turq),var(--v-blue),var(--v-purple),var(--v-magenta))!important;
+    background-size:250% 100%!important;
+    box-shadow:0 12px 25px rgba(91,72,166,.18)!important
+}
+.btn-main:hover {
+    background-position:100% 0!important
+}
+.btn-soft {
+    background:linear-gradient(90deg,#eee3ff,#ffe6f0)!important;
+    color:var(--v-purple)!important
+}
+.footer {
+    background:linear-gradient(135deg,#351858,#7039A5,#1CA89B,#E83E8C)!important
+}
+.floating.up {
+    background:linear-gradient(135deg,var(--v-purple),var(--v-magenta))!important
+}
+.floating.wa {
+    background:#25D366!important;
+    box-shadow:0 12px 28px rgba(37,211,102,.28)!important
+}
+@keyframes softFloat {
+    0%,100% {
+        transform:translateY(0)
+    }
+    50% {
+        transform:translateY(-7px)
+    }
+}
+.metric-icon,.section-pill,.pill {
+    animation:softFloat 4.5s ease-in-out infinite
+}
+@media(max-width:768px) {
+    .panel {
+        padding:23px!important
+    }
+    .metric {
+        min-height:160px
+    }
+    .carousel-caption h1 {
+        font-size:38px!important
+    }
+}
+  </style>
+  <style id="metamor-readability-final">
+   :root {
+    --read-ink:#2f2540;
+    --read-purple:#6a1fb5;
+    --read-deep:#4f168c;
+    --read-turq:#0f9f91;
+    --read-pink:#c72f78
+}
+body {
+    color:var(--read-ink)!important
+}
+.panel,.panel h2,.panel h3,.panel h4,.panel p,.panel label,.panel .small,.panel strong {
+    color:var(--read-ink)!important;
+    opacity:1!important
+}
+.panel h2,.panel h3,.panel h4 {
+    color:var(--read-deep)!important;
+    font-weight:850
+}
+.panel .text-muted {
+    color:#554b60!important;
+    opacity:1!important
+}
+.metric,.metric * {
+    color:var(--read-ink)!important;
+    opacity:1!important
+}
+.metric h2 {
+    color:var(--read-deep)!important
+}
+.metric .small {
+    color:#554b60!important
+}
+.metric-icon {
+    color:var(--read-purple)!important
+}
+.section-pill,.pill {
+    color:var(--read-purple)!important
+}
+.table-wrap {
+    background:#fff!important
+}
+.table,.table td,.table th {
+    color:#342a40!important
+}
+.table thead th {
+    color:#4f168c!important
+}
+.table tbody tr:hover {
+    color:#342a40!important
+}
+.form-control,.form-select {
+    color:#2f2540!important;
+    background:#fff!important
+}
+.form-control::placeholder {
+    color:#85798f!important;
+    opacity:1!important
+}
+.slot-check label {
+    color:#4a355d!important;
+    background:linear-gradient(145deg,#fff,#f2e8ff)!important;
+    font-weight:800!important
+}
+.slot-check input:checked+label {
+    color:#fff!important
+}
+.availability-item,.schedule-card {
+    color:#382c48!important
+}
+.availability-item strong,.schedule-card strong {
+    color:#4f168c!important
+}
+.status {
+    color:#4f168c!important
+}
+.btn-main {
+    color:#fff!important
+}
+.btn-soft {
+    color:var(--read-purple)!important
+}
+.footer,.footer * {
+    color:#fff!important
+}
+</style>
+<style id="metamor-final-admin-theme">
+:root {
+    --admin-purple: #8b4fd1;
+    --admin-purple-light: #eee3ff;
+    --admin-turq: #24bfae;
+    --admin-pink: #ee74a7;
+    --admin-blue: #62bde7;
+    --admin-ink: #31263e;
+}
+
+body {
+    color: var(--admin-ink) !important;
+    background:
+    radial-gradient(circle at 5% 8%, rgba(203,177,242,.28), transparent 23%),
+    radial-gradient(circle at 94% 12%, rgba(98,189,231,.23), transparent 24%),
+    radial-gradient(circle at 18% 86%, rgba(238,116,167,.16), transparent 25%),
+    linear-gradient(180deg, #fff8fc 0%, #f7f0ff 48%, #edfffc 100%) !important;
+}
+.hero {
+    background: linear-gradient(135deg, #c7a8ec 0%, #9d7bd6 34%, #74b9df 67%, #55c7b8 100%) !important;
+    color: #302340 !important;
+    box-shadow: 0 24px 60px rgba(78,50,107,.16) !important;
+}
+.hero h1,
+.hero h2,
+.hero h3,
+.hero p,
+.hero .small {
+    color: #302340 !important;
+    text-shadow: none !important;
+}
+.panel,
+.metric,
+.schedule-card,
+.availability-item {
+    border: 2px solid rgba(139,79,209,.11) !important;
+    box-shadow: 0 18px 44px rgba(73,45,103,.10) !important;
+}
+.panel {
+    background: linear-gradient(145deg, #fff, #fbf4ff 52%, #effdfa) !important;
+}
+.metric:nth-child(1) {
+    background: linear-gradient(145deg, #fff7fd, #eee1ff) !important;
+}
+.metric:nth-child(2) {
+    background: linear-gradient(145deg, #fff8fb, #ffe4ef) !important;
+}
+.metric:nth-child(3) {
+    background: linear-gradient(145deg, #f1fffc, #e2f6ff) !important;
+}
+.btn-main,
+.btn-exit {
+    background: linear-gradient(90deg, #8b4fd1, #b26fe1, #2abfaa) !important;
+    color: #fff !important;
+}
+.btn-soft {
+    background: linear-gradient(90deg, #eee3ff, #ffe8f1) !important;
+    color: #69398f !important;
+    border: 1px solid #d6c0eb !important;
+}
+.record-filter {
+    background: linear-gradient(135deg,#fff4fb,#f1ecff 52%,#e8fbf8) !important;
+    border: 1px solid #ead9f7 !important;
+}
+.selected-day-badge {
+    display:inline-flex;
+    align-items:center;
+    padding:7px 13px;
+    border-radius:999px;
+    background:#eadcff;
+    color:#64328f;
+    font-weight:800;
+}
+.day-check-list {
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:8px;
+}
+.day-check-list label {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    padding:10px 8px;
+    border-radius:13px;
+    background:linear-gradient(145deg,#fff4fb,#f4efff);
+    border:1px solid #e1d1ef;
+    color:#5c3b76;
+    font-weight:800;
+    cursor:pointer;
+}
+.day-check-list input { accent-color:#7b2cbf; }
+.availability-item { border:1px solid #e3d4ef !important; box-shadow:0 10px 24px rgba(90,53,120,.08); }
+.table-wrap { border-radius:22px; overflow:auto; }
+@media (max-width: 767px) { .day-check-list { grid-template-columns:repeat(4,1fr); } }
+.slot-check label {
+    background: linear-gradient(145deg, #fff, #f4ebff) !important;
+    border: 2px solid #d9c3ed !important;
+    color: #613a83 !important;
+}
+.slot-check input:checked + label {
+    background: linear-gradient(90deg, #40c8b7, #72afe5, #9b68cf) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+}
+.availability-item {
+    background: linear-gradient(145deg, #e7fff9, #f0e7ff 58%, #fff0f7) !important;
+}
+.schedule-card {
+    background: linear-gradient(145deg, #fff, #fff0f7 55%, #edfffb) !important;
+    border-left: 7px solid #9b62d6 !important;
+}
+.table thead th {
+    background: linear-gradient(90deg, #eadfff, #ffe4f0, #dcfbf7) !important;
+    color: #563678 !important;
+}
+
+footer,
+.footer {
+    background: linear-gradient(135deg, #7144a6, #8f58c3, #25a998) !important;
+}
+</style>
+</head>
+<body id="top">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                met
+                <span>
+                    AMOR
+                </span>
+                fosis
+            </a>
+            <button class="navbar-toggler border-0" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
+                <i class="bi bi-list fs-1">
+                </i>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contacto">
+                            Contacto
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0 dropdown">
+                        <button class="btn btn-exit dropdown-toggle" data-bs-toggle="dropdown" type="button">
+                            <i class="bi bi-person-circle me-1"></i><span id="adminProfileLabel">Perfil</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 p-2">
+                            <li><a class="dropdown-item rounded-3" href="#registros"><i class="bi bi-journal-text me-2"></i>Registros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item rounded-3 text-danger" id="logoutAdmin" type="button"><i class="bi
+                                bi-box-arrow-right me-2"></i>Cerrar sesi&oacute;n</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                <section class="hero mb-4">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-8">
+                            <span class="badge rounded-pill bg-light text-dark px-3 py-2">
+                                Panel administrativo
+                            </span>
+                            <h1 class="display-5 fw-bold mt-3">
+                                Agenda del consultorio
+                            </h1>
+                            <p class="lead mb-0">
+                                Gestiona reservas y publica la disponibilidad de cada profesional.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <button class="btn btn-light rounded-pill px-4 fw-bold" id="actualizarAgenda" type="button">
+                                <i class="bi bi-arrow-repeat me-1">
+                                </i>
+                                Actualizar agenda
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <div class="metric-icon mb-3">
+                                <i class="bi bi-calendar2-check">
+                                </i>
+                            </div>
+                            <div class="small text-muted">
+                                Citas registradas
+                            </div>
+                            <h2 class="fw-bold" id="total">
+                                0
+                            </h2>
+                            <div class="small text-muted">
+                                Reservas activas en la agenda
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <div class="metric-icon mb-3">
+                                <i class="bi bi-people">
+                                </i>
+                            </div>
+                            <div class="small text-muted">
+                                Pacientes
+                            </div>
+                            <h2 class="fw-bold" id="pacientes">
+                                0
+                            </h2>
+                            <div class="small text-muted">
+                                Personas con una reserva
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <div class="metric-icon mb-3">
+                                <i class="bi bi-calendar-heart">
+                                </i>
+                            </div>
+                            <div class="small text-muted">
+                                Citas de hoy
+                            </div>
+                            <h2 class="fw-bold" id="hoy">
+                                0
+                            </h2>
+                            <div class="small text-muted">
+                                Seg&uacute;n la agenda actual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <section class="panel" id="registros">
+                            <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+                                <div>
+                                    <span class="pill">
+                                        <i class="bi bi-list-check">
+                                        </i>
+                                        Agenda
+                                    </span>
+                                    <h2 class="fw-bold mt-3 mb-1">
+                                        Reservas de pacientes
+                                    </h2>
+                                    <p class="text-muted mb-0">
+                                        Consulta qui&eacute;n reserv&oacute;, profesional, fecha, hora y modalidad.
+                                    </p>
+
+                                </div>
+        <i class="bi bi-calendar2-week fs-1" style="color:var(--purple)">
+        </i>
+       </div>
+       <div class="record-filter mb-4 p-3 rounded-4">
+        <div class="row g-3 align-items-end">
+         <div class="col-md-6">
+          <label class="form-label fw-semibold">Ver citas de un d&iacute;a</label>
+          <input class="form-control" id="fechaRegistroFiltro" type="date"/>
+         </div>
+         <div class="col-md-3">
+          <button class="btn btn-soft w-100" id="diaAnterior" type="button"><i class="bi bi-chevron-left me-1"></i>D&iacute;a anterior</button>
+         </div>
+         <div class="col-md-3">
+          <button class="btn btn-soft w-100" id="diaSiguiente" type="button">D&iacute;a siguiente<i class="bi bi-chevron-right ms-1"></i></button>
+         </div>
+        </div>
+        <div class="mt-3 d-flex flex-wrap align-items-center gap-2">
+         <span class="small text-muted">Mostrando:</span>
+         <span class="selected-day-badge" id="fechaRegistroTexto">Todas las citas</span>
+         <span class="small text-muted" id="conteoDia"></span>
+         <button class="btn btn-sm btn-light border rounded-pill ms-auto" id="verTodas" type="button">Ver todas</button>
+        </div>
+       </div>
+       <div class="table-wrap">
+        <table class="table align-middle">
+         <thead>
+          <tr>
+           <th>
+            Paciente
+           </th>
+           <th>
+            Especialidad
+           </th>
+           <th>
+            Profesional
+           </th>
+           <th>
+            Fecha
+           </th>
+           <th>
+            Hora
+           </th>
+           <th>
+            Estado
+           </th>
+           <th>
+           </th>
+          </tr>
+         </thead>
+         <tbody id="tabla">
+         </tbody>
+        </table>
+       </div>
+       <div class="text-center text-muted py-5 d-none" id="empty">
+        <i class="bi bi-calendar-x fs-1 d-block mb-2">
+        </i>
+        No hay citas registradas.
+       </div>
+      </section>
+     </div>
+
+     <div class="col-12">
+      <section class="panel schedule-card">
+       <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+        <div>
+         <span class="pill">
+          <i class="bi bi-clock-fill"></i>
+          Horarios habituales
+         </span>
+         <h2 class="fw-bold mt-3 mb-1">Agenda normal de cada profesional</h2>
+         <p class="text-muted mb-0">Estos son los horarios habituales. Los cambios se realizan solo cuando existe una excepción.</p>
+        </div>
+       </div>
+       <div class="row g-3" id="horariosHabituales"></div>
+      </section>
+     </div>
+     <div class="col-lg-7">
+      <section class="panel h-100">
+       <span class="pill">
+        <i class="bi bi-clock-history">
+        </i>
+        Disponibilidad
+       </span>
+       <h2 class="fw-bold mt-3">
+        Ajustar disponibilidad
+       </h2>
+       <p class="text-muted">
+        Usa esta sección solo para agregar o bloquear horarios cuando exista un cambio especial.
+       </p>
+       <form id="dispForm">
+        <div class="row g-3">
+         <div class="col-md-6">
+          <label class="form-label fw-semibold">Tipo de ajuste</label>
+          <select class="form-select" id="daTipo" required>
+           <option value="Disponible">Agregar disponibilidad especial</option>
+           <option value="Bloqueado">Bloquear horario por excepción</option>
+          </select>
+         </div>
+         <div class="col-md-6">
+          <label class="form-label fw-semibold">Profesional</label>
+          <select class="form-select" id="dp" required>
+           <option value="">Selecciona</option>
+           <option>Lic. Ana Fern&aacute;ndez</option>
+           <option>Lic. Carlos M&eacute;ndez</option>
+           <option>Lic. Mar&iacute;a L&oacute;pez</option>
+          </select>
+         </div>
+         <div class="col-md-3">
+          <label class="form-label fw-semibold">Desde</label>
+          <input class="form-control" id="dfInicio" required type="date"/>
+         </div>
+         <div class="col-md-3">
+          <label class="form-label fw-semibold">Hasta</label>
+          <input class="form-control" id="dfFin" required type="date"/>
+         </div>
+         <div class="col-12">
+          <label class="form-label fw-semibold">D&iacute;as de la semana</label>
+          <div class="day-check-list" id="weekDays">
+           <label><input type="checkbox" value="1"> Lun</label>
+           <label><input type="checkbox" value="2"> Mar</label>
+           <label><input type="checkbox" value="3"> Mi&eacute;</label>
+           <label><input type="checkbox" value="4"> Jue</label>
+           <label><input type="checkbox" value="5"> Vie</label>
+           <label><input type="checkbox" value="6"> S&aacute;b</label>
+           <label><input type="checkbox" value="0"> Dom</label>
+          </div>
+          <div class="d-flex gap-2 flex-wrap mt-2">
+           <button class="btn btn-sm btn-soft" id="marcarSemana" type="button">Lunes a viernes</button>
+           <button class="btn btn-sm btn-soft" id="marcarFinSemana" type="button">Fin de semana</button>
+          </div>
+         </div>
+         <div class="col-12">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+           <label class="form-label fw-semibold mb-0">Horarios disponibles</label>
+           <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-soft" id="marcarManana" type="button">Ma&ntilde;ana</button>
+            <button class="btn btn-sm btn-soft" id="marcarTarde" type="button">Tarde</button>
+            <button class="btn btn-sm btn-soft" id="marcarTodos" type="button">Todos</button>
+           </div>
+          </div>
+          <div class="slot-list" id="slotList"></div>
+         </div>
+        </div>
+        <button class="btn btn-main mt-4" type="submit"><i class="bi bi-calendar2-plus me-1"></i>Guardar ajuste</button>
+        <div class="small mt-3" id="dmsg"></div>
+       </form>
+      </section>
+     </div>
+     <div class="col-lg-5">
+      <section class="panel h-100">
+       <span class="pill">
+        <i class="bi bi-calendar3">
+        </i>
+        Agenda publicada
+       </span>
+       <h2 class="fw-bold mt-3">
+        Horarios visibles
+       </h2>
+       <p class="text-muted">
+        Aqu&iacute; aparecen los d&iacute;as y turnos que podr&aacute;n ver los pacientes.
+       </p>
+       <div class="mt-3" id="disponibilidadLista">
+       </div>
+      </section>
+     </div>
+     <div class="col-12">
+      <section class="panel">
+       <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+         <span class="pill">
+          <i class="bi bi-building">
+          </i>
+          Citas presenciales
+         </span>
+         <h2 class="fw-bold mt-3">
+          Registrar una cita directamente
+         </h2>
+         <p class="text-muted">
+          Agrega una reserva tomada en el consultorio manteniendo la misma estructura de datos de las citas en l&iacute;nea.
+         </p>
+        </div>
+        <div class="col-lg-5">
+         <form id="adminForm">
+          <div class="mb-2">
+           <input class="form-control" id="ac" placeholder="Nombre o correo del paciente" required=""/>
+          </div>
+          <div class="row g-2">
+           <div class="col-6">
+            <select class="form-select" id="ae" required="">
+             <option value="">
+              Especialidad
+             </option>
+             <option>
+              Terapia Individual
+             </option>
+             <option>
+              Terapia Infantil
+             </option>
+             <option>
+              Terapia Familiar
+             </option>
+             <option>
+              Terapia de Pareja
+             </option>
+             <option>
+              Evaluaci&oacute;n Psicol&oacute;gica
+             </option>
+             <option>
+              Orientaci&oacute;n Vocacional
+             </option>
+            </select>
+           </div>
+           <div class="col-6">
+            <select class="form-select" id="ap" required="">
+             <option value="">
+              Profesional
+             </option>
+             <option>
+              Lic. Ana Fern&aacute;ndez
+             </option>
+             <option>
+              Lic. Carlos M&eacute;ndez
+             </option>
+             <option>
+              Lic. Mar&iacute;a L&oacute;pez
+             </option>
+            </select>
+           </div>
+          </div>
+          <div class="row g-2 mt-2">
+           <div class="col-6">
+            <input class="form-control" id="af" required="" type="date"/>
+           </div>
+           <div class="col-6">
+            <input class="form-control" id="ah" required="" type="time"/>
+           </div>
+          </div>
+          <button class="btn btn-main w-100 mt-3" type="submit">
+           <i class="bi bi-plus-circle me-1">
+           </i>
+           Registrar cita presencial
+          </button>
+          <div class="small mt-2" id="amsg">
+          </div>
+         </form>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="container">
+    <div class="row g-4">
+     <div class="col-lg-6">
+      <h3 style="color:#BFEFE6">
+       metAMORfosis
+      </h3>
+      <p class="text-white-50 mb-0">
+       Gesti&oacute;n de citas y agenda del consultorio.
+      </p>
+     </div>
+     <div class="col-lg-6 text-lg-end">
+      <a class="text-white text-decoration-none me-3" href="index.html">
+       Inicio
+      </a>
+      <a class="text-white text-decoration-none" href="index.html#contacto">
+       Contacto
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <a class="floating up" href="#top">
+   <i class="bi bi-arrow-up">
+   </i>
+  </a>
+  <a class="floating wa" href="https://wa.me/59178601158" target="_blank">
+   <i class="bi bi-whatsapp">
+   </i>
+  </a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+   (function () {
+    const SESSION = sessionStorage;
+    const LOCAL = localStorage;
+    const CITAS = "metAMOR_citas";
+    const DISP = "metAMOR_disponibilidad";
+    const HABITUAL = "metAMOR_horarioHabitual";
+    const AGENDA_VERSION = "metAMOR_agendaVersion";
+    const $ = (id) => document.getElementById(id);
+
+    const HORARIO_HABITUAL = {
+     "Lic. Ana Fernández": {
+      1: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      2: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      3: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      4: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      5: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"]
+     },
+     "Lic. Carlos Méndez": {
+      1: ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"],
+      2: ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"],
+      3: ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"],
+      4: ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"],
+      5: ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"]
+     },
+     "Lic. María López": {
+      2: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      3: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      4: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      5: ["08:00","09:00","10:00","11:00","14:00","15:00","16:00"],
+      6: ["09:00","10:00","11:00"]
+     }
+    };
+
+    const tipo = SESSION.getItem("tipoUsuario") || LOCAL.getItem("tipoUsuario");
+    const correo = SESSION.getItem("correoUsuario") || LOCAL.getItem("correoUsuario");
+    if (tipo !== "admin" || !correo) {
+     window.location.href = "index.html";
+     return;
+    }
+
+    const PROFESIONALES = ["Lic. Ana Fernández", "Lic. Carlos Méndez", "Lic. María López"];
+    const HORAS = ["08:00", "09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
+    let fechaFiltro = "";
+
+    $("adminProfileLabel").textContent = SESSION.getItem("nombreUsuario") || "Perfil";
+
+    function read(key) {
+     try { return JSON.parse(LOCAL.getItem(key) || "[]"); } catch (error) { return []; }
+    }
+
+    function write(key, value) {
+     LOCAL.setItem(key, JSON.stringify(value));
+    }
+
+    function uid() {
+     return window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random();
+    }
+
+    function iso(date) {
+     return date.toISOString().slice(0,10);
+    }
+
+    function formatDate(value) {
+     const [year, month, day] = value.split("-").map(Number);
+     return new Date(year, month - 1, day).toLocaleDateString("es-BO", {
+      weekday: "long", day: "numeric", month: "long", year: "numeric"
+     });
+    }
+
+    function seedDefaultSchedule() {
+     const version = (() => {
+      try { return LOCAL.getItem(AGENDA_VERSION); } catch (error) { return null; }
+     })();
+     const habitual = read(HABITUAL);
+     const needsSchedule = !habitual || Array.isArray(habitual) || Object.keys(habitual).length === 0;
+     if (needsSchedule) {
+      write(HABITUAL, HORARIO_HABITUAL);
+     }
+     if (version !== "2") {
+      // Limpia únicamente la disponibilidad de prueba anterior; las citas se conservan.
+      try { LOCAL.removeItem(DISP); } catch (error) {}
+      try { LOCAL.setItem(AGENDA_VERSION, "2"); } catch (error) {}
+     }
+    }
+
+    function renderHabituales() {
+     const box = $("horariosHabituales");
+     if (!box) return;
+     const dayNames = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+     const habitual = read(HABITUAL);
+     box.innerHTML = "";
+
+     PROFESIONALES.forEach((professional) => {
+      const card = document.createElement("div");
+      card.className = "col-lg-4";
+      const schedule = habitual[professional] || {};
+      const rows = Object.keys(schedule).sort((a,b) => Number(a) - Number(b));
+      card.innerHTML = `
+       <div class="availability-item h-100">
+        <div class="d-flex align-items-center gap-2 mb-2">
+         <span class="metric-icon"><i class="bi bi-person-heart"></i></span>
+         <strong>${professional}</strong>
+        </div>
+        <div class="small text-muted">Horario habitual</div>
+        <div class="mt-3">${rows.map((day) => `
+         <div class="d-flex justify-content-between gap-2 py-2 border-bottom">
+          <span class="fw-semibold">${dayNames[Number(day)]}</span>
+          <span class="small text-end">${schedule[day].join(" · ")}</span>
+         </div>`).join("")}
+        </div>
+       </div>`;
+      box.appendChild(card);
+     });
+    }
+
+    function renderSlots() {
+     const box = $("slotList");
+     box.innerHTML = "";
+     HORAS.forEach((hour, index) => {
+      const wrap = document.createElement("div");
+      wrap.className = "slot-check";
+      wrap.innerHTML = `<input type="checkbox" id="slot${index}" value="${hour}"><label for="slot${index}">${hour}</label>`;
+      box.appendChild(wrap);
+     });
+    }
+
+    function setSlotGroup(predicate) {
+     document.querySelectorAll('#slotList input[type="checkbox"]').forEach((input) => { input.checked = predicate(input.value); });
+    }
+
+    function setWeekGroup(values) {
+     document.querySelectorAll('#weekDays input').forEach((input) => { input.checked = values.includes(input.value); });
+    }
+
+    function renderCitas() {
+     const all = read(CITAS).sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
+     const filtered = fechaFiltro ? all.filter((item) => item.date === fechaFiltro) : all;
+     $("total").textContent = all.length;
+     $("pacientes").textContent = new Set(all.map((item) => item.email)).size;
+     const today = iso(new Date());
+     $("hoy").textContent = all.filter((item) => item.date === today).length;
+     $("conteoDia").textContent = fechaFiltro ? `${filtered.length} ${filtered.length === 1 ? "cita" : "citas"}` : `${all.length} ${all.length === 1 ? "cita" : "citas"}`;
+     $("fechaRegistroTexto").textContent = fechaFiltro ? formatDate(fechaFiltro) : "Todas las citas";
+
+     const body = $("tabla");
+     body.innerHTML = "";
+     $("empty").classList.toggle("d-none", filtered.length > 0);
+     filtered.forEach((cita) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+       <td><strong>${cita.email}</strong></td>
+       <td>${cita.specialty}</td>
+       <td>${cita.psychologist}</td>
+       <td>${formatDate(cita.date)}</td>
+       <td><span class="status">${cita.time}</span></td>
+       <td><span class="status">${cita.status || "Reservada"}</span></td>
+       <td><button class="btn btn-soft btn-sm borrar" type="button"><i class="bi bi-trash3"></i></button></td>`;
+      row.querySelector(".borrar").addEventListener("click", () => {
+       if (window.confirm("¿Eliminar esta cita?")) {
+        write(CITAS, read(CITAS).filter((item) => item.id !== cita.id));
+        renderCitas();
+        renderDisponibilidad();
+       }
+      });
+      body.appendChild(row);
+     });
+    }
+
+    function renderDisponibilidad() {
+     const list = $("disponibilidadLista");
+     list.innerHTML = "";
+     const groups = {};
+     read(DISP).forEach((item) => {
+      const key = `${item.date}|${item.psychologist}`;
+      (groups[key] ||= []).push(item);
+     });
+     const entries = Object.entries(groups).sort((a,b) => a[0].localeCompare(b[0]));
+     if (!entries.length) {
+      list.innerHTML = '<div class="mini-note">No hay ajustes especiales registrados.</div>';
+      return;
+     }
+     entries.slice(0,30).forEach(([key, items]) => {
+      const [date, professional] = key.split("|");
+      const item = document.createElement("div");
+      item.className = "availability-item mb-3";
+      item.innerHTML = `
+       <div>
+        <strong>${formatDate(date)}</strong>
+        <div class="small text-muted mt-1">${professional}</div>
+        <div class="small mt-2">${items.map((entry) => `${entry.time} · ${entry.status === "Bloqueado" ? "Bloqueado" : "Disponible"}`).join(" &nbsp; | &nbsp; ")}</div>
+       </div>
+       <div class="text-end">
+        <button class="btn btn-soft btn-sm quitar" type="button">Quitar ajuste</button>
+       </div>`;
+      item.querySelector(".quitar").addEventListener("click", () => {
+       if (window.confirm("¿Quitar los ajustes especiales de ese día?")) {
+        write(DISP, read(DISP).filter((entry) => !(entry.date === date && entry.psychologist === professional)));
+        renderDisponibilidad();
+       }
+      });
+      list.appendChild(item);
+     });
+    }
+
+    function applyDateFilter(value) {
+     fechaFiltro = value || "";
+     $("fechaRegistroFiltro").value = fechaFiltro;
+     renderCitas();
+    }
+
+    $("fechaRegistroFiltro").addEventListener("change", (event) => applyDateFilter(event.target.value));
+    $("verTodas").addEventListener("click", () => applyDateFilter(""));
+    $("diaAnterior").addEventListener("click", () => {
+     const base = fechaFiltro ? new Date(fechaFiltro + "T12:00:00") : new Date();
+     base.setDate(base.getDate() - 1);
+     applyDateFilter(iso(base));
+    });
+    $("diaSiguiente").addEventListener("click", () => {
+     const base = fechaFiltro ? new Date(fechaFiltro + "T12:00:00") : new Date();
+     base.setDate(base.getDate() + 1);
+     applyDateFilter(iso(base));
+    });
+
+    $("marcarSemana").addEventListener("click", () => setWeekGroup(["1","2","3","4","5"]));
+    $("marcarFinSemana").addEventListener("click", () => setWeekGroup(["6","0"]));
+    $("marcarManana").addEventListener("click", () => setSlotGroup((h) => h < "12:00"));
+    $("marcarTarde").addEventListener("click", () => setSlotGroup((h) => h >= "14:00"));
+    $("marcarTodos").addEventListener("click", () => setSlotGroup(() => true));
+
+    $("dfInicio").min = iso(new Date());
+    $("dfFin").min = iso(new Date());
+    renderSlots();
+
+    $("dispForm").addEventListener("submit", (event) => {
+     event.preventDefault();
+     const professional = $("dp").value;
+     const adjustment = $("daTipo").value;
+     const start = $("dfInicio").value;
+     const end = $("dfFin").value;
+     const days = [...document.querySelectorAll('#weekDays input:checked')].map((input) => Number(input.value));
+     const times = [...document.querySelectorAll('#slotList input:checked')].map((input) => input.value);
+
+     if (!professional || !start || !end || start > end || !days.length || !times.length) {
+      $("dmsg").innerHTML = '<span class="text-danger">Selecciona profesional, rango, días y horarios.</span>';
+      return;
+     }
+
+     const appointments = read(CITAS);
+     let current = read(DISP);
+     let created = 0;
+     const cursor = new Date(start + "T12:00:00");
+     const limit = new Date(end + "T12:00:00");
+
+     while (cursor <= limit) {
+      if (days.includes(cursor.getDay())) {
+       const date = iso(cursor);
+       times.forEach((time) => {
+        const taken = appointments.some((item) =>
+         item.psychologist === professional && item.date === date && item.time === time
+        );
+        if (adjustment === "Bloqueado" && taken) return;
+
+        current = current.filter((item) => !(
+         item.psychologist === professional &&
+         item.date === date &&
+         item.time === time
+        ));
+        current.push({
+         id: uid(),
+         psychologist: professional,
+         date,
+         time,
+         status: adjustment
+        });
+        created += 1;
+       });
+      }
+      cursor.setDate(cursor.getDate() + 1);
+     }
+
+     write(DISP, current);
+     event.target.reset();
+     renderSlots();
+     renderHabituales();
+     renderDisponibilidad();
+     const word = adjustment === "Bloqueado" ? "bloqueado" : "agregado";
+     $("dmsg").innerHTML = `<span class="text-success">Se ${word} ${created} turno${created === 1 ? "" : "s"}.</span>`;
+    });
+
+    $("adminForm").addEventListener("submit", (event) => {
+     event.preventDefault();
+     const item = {
+      id: uid(),
+      email: $("ac").value.trim(),
+      specialty: $("ae").value,
+      psychologist: $("ap").value,
+      date: $("af").value,
+      time: $("ah").value,
+      status: "Reservada",
+      modalidad: "Presencial"
+     };
+     const appointments = read(CITAS);
+     const occupied = appointments.some((entry) => entry.psychologist === item.psychologist && entry.date === item.date && entry.time === item.time);
+     if (occupied) {
+      $("amsg").innerHTML = '<span class="text-danger">Ese horario ya fue reservado. No hay disponibilidad para ese turno.</span>';
+      return;
+     }
+     appointments.push(item);
+     write(CITAS, appointments);
+     event.target.reset();
+     $("amsg").innerHTML = '<span class="text-success">Cita presencial registrada correctamente.</span>';
+     renderCitas();
+     renderDisponibilidad();
+    });
+
+    $("actualizarAgenda").addEventListener("click", () => { renderCitas(); renderHabituales(); renderDisponibilidad(); });
+    $("logoutAdmin").addEventListener("click", () => {
+     try { SESSION.clear(); } catch (error) {}
+     try { ["tipoUsuario","correoUsuario","nombreUsuario"].forEach((key) => LOCAL.removeItem(key)); } catch (error) {}
+     window.location.href = "index.html";
+    });
+
+    seedDefaultSchedule();
+    renderHabituales();
+    renderCitas();
+    renderDisponibilidad();
+    const today = iso(new Date());
+    $("af").min = today;
+    $("fechaRegistroFiltro").max = "9999-12-31";
+   })();
+  </script>
+ </body>
+</html>
